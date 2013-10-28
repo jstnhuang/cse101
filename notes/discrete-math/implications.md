@@ -79,8 +79,8 @@ The converse isn't guaranteed to be `true` for the same reason. Your friend coul
 
 Thinking about whether the contrapositive is always `true` is the hardest of them all. Either it was sunny or it rained.
 
-  * If it was sunny outside, then your friend must have gone for a run.
-  * If it rained, your friend may have gone for a run, but also may not have.
+* If it was sunny outside, then your friend must have gone for a run.
+* If it rained, your friend may have gone for a run, but also may not have.
 
 So as we can see, the only time your friend wouldn't have gone for a run is if it was rainy outside.
   
