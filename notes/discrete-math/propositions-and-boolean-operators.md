@@ -1,18 +1,23 @@
+---
+title: Propositions and boolean operators
+layout: note
+---
+
 # Propositions and boolean operators
 We use math in computer science for a variety of reasons. For example, it's  pretty common for people to use mathematical notation to describe their ideas. Or, they might use math to show that something is true. In this series of notes, we’ll talk about commonly used mathematical notation, concepts, and techniques.
 
 ## Propositions
-A *boolean* variable (named after [George Boole][1]) is a variable that is either `true` or `false`. A statement that's either `true` or `false` is called a *proposition* (sometimes also called a *predicate* or a *statement*). For example, "I was born in December" is either `true` or `false`, depending on who you are. "1 + 1 = 2" is a proposition that is always `true`.
+A *boolean* variable (named after [George Boole](http://en.wikipedia.org/wiki/George_Boole)) is a variable that is either `true` or `false`. A statement that's either `true` or `false` is called a *proposition* (sometimes also called a *predicate* or a *statement*). For example, "I was born in December" is either `true` or `false`, depending on who you are. "1 + 1 = 2" is a proposition that is always `true`.
 
 More examples of propositions:
 
-  * "I'll get heads when I flip a coin."
-  * "The full moon will be out tonight."
+* "I'll get heads when I flip a coin."
+* "The full moon will be out tonight."
 
 Not propositions:
 
-  * "The number I get when I roll a fair die."
-  * "The meaning of life."
+* "The number I get when I roll a fair die."
+* "The meaning of life."
 
 ## Operators
 We can combine two propositions together to form a new proposition. We call these *operations*. The most common operations are `not`, `and`, `or`, `xor`, and `implies`.
@@ -64,31 +69,30 @@ $a$ | $b$ | $a \oplus b$
 `Nand` and `nor` mean `not and` and `not or`. They take on the opposite truth values of `and` and `or`.
 
 ### Implications
-
 The last operator we need to talk about is `implies`. It can be difficult, to understand, but it is also very important -- so important, the entire next page is devoted to it.
 
+
 ## Questions
-  1. Here's an empty truth table with two variables. Fill in the last column with some values. How many possible ways are there to fill out the last column?
+1. Here's an empty truth table with two variables. Fill in the last column with some values. How many possible ways are there to fill out the last column?
+
     $a$ | $b$ | $f(a, b)$
     --- | --- | ---------
-    `true` | `true` | <input type="radio">`true`</input> <input type="radio">`false`</input>
-    `true` | `false` | <input type="radio">`true`</input> <input type="radio">`false`</input>
-    `false` | `true` | <input type="radio">`true`</input> <input type="radio">`false`</input>
-    `false` | `false` | <input type="radio">`true`</input> <input type="radio">`false`</input>
+    `true` | `true` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
+    `true` | `false` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
+    `false` | `true` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
+    `false` | `false` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
 
-  2.  Here's an empty truth table with three variables. How many possible truth tables are there now? How many possible truth tables would there be if we had $n$ variables?
+2.  Here's an empty truth table with three variables. How many possible truth tables are there now? How many possible truth tables would there be if we had $n$ variables?
+
     $a$ | $b$ | $c$ | $f(a, b, c)$
     --- | --- | --- | ------------
-    `true` | `true` | `true` | <input type="radio">`true`</input> <input type="radio">`false`</input>
-    `true` | `true` | `false` | <input type="radio">`true`</input> <input type="radio">`false`</input>
-    `true` | `false` | `true` | <input type="radio">`true`</input> <input type="radio">`false`</input>
-    `true` | `false` | `false` | <input type="radio">`true`</input> <input type="radio">`false`</input>
-    `false` | `true` | `true` | <input type="radio">`true`</input> <input type="radio">`false`</input>
-    `false` | `true` | `false` | <input type="radio">`true`</input> <input type="radio">`false`</input>
-    `false` | `false` | `true` | <input type="radio">`true`</input> <input type="radio">`false`</input>
-    `false` | `false` | `false` | <input type="radio">`true`</input> <input type="radio">`false`</input>
-
-> Written with [StackEdit](https://stackedit.io/).
+    `true` | `true` | `true` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
+    `true` | `true` | `false` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
+    `true` | `false` | `true` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
+    `true` | `false` | `false` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
+    `false` | `true` | `true` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
+    `false` | `true` | `false` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
+    `false` | `false` | `true` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
+    `false` | `false` | `false` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
 
   [1]: http://en.wikipedia.org/wiki/George_Boole
-  [2]: test
