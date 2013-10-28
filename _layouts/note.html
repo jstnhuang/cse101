@@ -27,12 +27,19 @@
         margin: 40px auto;
         max-width: 960px;
         min-width: 600px;
+        width: 90%;
         overflow: auto;
-        padding: 0px 40px;
+        padding: 20px 40px;
+      }
+      .document h1 {
+        margin-top: 10px;
       }
     </style>
   </head>
   <body>
-    <div class="document">{{content}}</div>
+    <div class="document">
+      <a href="/">&larr; Back to CSE 101</a>
+      {{content}}
+    </div>
   </body>
 </html>
