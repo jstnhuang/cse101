@@ -7,11 +7,11 @@ layout: note
 
 `Implies` can be a difficult operator to understand. But, we will use it often. There are many different ways to say $a$ `implies` $b$ (notated $a \to b$):
 
-  * $a$ `implies` $b$
-  * $b$ is implied by $a$
-  * $a \to b$
-  * If $a$, then $b$
-  * $b$ if $a$
+* $a$ `implies` $b$
+* $b$ is implied by $a$
+* $a \to b$
+* If $a$, then $b$
+* $b$ if $a$
 
 What it means for $a$ `implies` $b$ to be `true` is that if $a$ is `true`, then $b$ must also be `true`. If $a$ is `false`, then it doesn't matter what $b$ is -- $a$ `implies` $b$ will be `true`. Here it is in a truth table:
 
