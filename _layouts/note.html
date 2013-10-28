@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{page.title}}</title>
+    <link rel="stylesheet" href="https://stackedit.io/res-min/themes/default.css" />
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] },
+          TeX: {
+            Macros: {
+              argmax: "{\\arg\\!\\max}"
+            }
+          }
+        });
+    </script>
+    <script type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+      </script>
+    <style>
+      body {
+        background-color: white;
+      }
+      .document {
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        margin: 40px auto;
+        max-width: 960px;
+        min-width: 600px;
+        overflow: auto;
+        padding: 0px 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="document">{{content}}</div>
+  </body>
+</html>
