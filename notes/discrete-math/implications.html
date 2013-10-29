@@ -3,106 +3,120 @@ title: Implications
 layout: note
 ---
 
-# Implications
+<h1>Implications</h1>
+<p><code>Implies</code> can be a difficult operator to understand. But, we will use it often. There are many different ways to say $a$ <code>implies</code> $b$ (notated $a \to b$):</p>
 
-`Implies` can be a difficult operator to understand. But, we will use it often. There are many different ways to say $a$ `implies` $b$ (notated $a \to b$):
+<ul>
+  <li>$a$ <code>implies</code> $b$</li>
+  <li>$b$ is implied by $a$</li>
+  <li>$a \to b$</li>
+  <li>If $a$, then $b$</li>
+  <li>$b$ if $a$</li>
+</ul>
 
-* $a$ `implies` $b$
-* $b$ is implied by $a$
-* $a \to b$
-* If $a$, then $b$
-* $b$ if $a$
+<p>What it means for $a$ <code>implies</code> $b$ to be <code>true</code> is that if $a$ is <code>true</code>, then $b$ must also be <code>true</code>. If $a$ is <code>false</code>, then it doesn't matter what $b$ is -- $a$ <code>implies</code> $b$ will be <code>true</code>. Here it is in a truth table:</p>
 
-What it means for $a$ `implies` $b$ to be `true` is that if $a$ is `true`, then $b$ must also be `true`. If $a$ is `false`, then it doesn't matter what $b$ is -- $a$ `implies` $b$ will be `true`. Here it is in a truth table:
+<table>
+  <tr><th>$a$</th><th>$b$</th><th>$a \to b$</th></tr>
+  <tr><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>
+  <tr><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+  <tr><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>
+  <tr><td><code>false</code></td><td><code>false</code></td><td><code>true</code></td></tr>
+</table>
 
-$a$ | $b$ | $a \to b$
---- | --- | ---------
-`true` | `true` | `true`
-`true` | `false` | `false`
-`false` | `true` | `true`
-`false` | `false` | `true`
+<h2>Examples</h2>
+<p>Some examples may help clarify how this works.</p>
 
-## Examples
-Some examples may help clarify how this works.
+<h3>Number line</h3>
+<p>Suppose $a$ = "$x > 5$" and $b$ = "$x > 0$". In this case, $a \to b$ = <code>true</code>, because whenever you have a number greater than 5, it must also be greater than 0.</p>
 
-### Number line
-Suppose $a$ = "$x > 5$" and $b$ = "$x > 0$". In this case, $a \to b$ = `true`, because whenever you have a number greater than 5, it must also be greater than 0.
+<p>Now suppose $a$ = "$x > -5$" and $b$ = "$x > 0$". Does $a$ imply $b$? No. If $x = -3$, then $a$ is <code>true</code>, but $b$ is <code>false</code>. So $a \to b$ is <code>false</code>. $a$ being <code>true</code> should guarantee that $b$ is <code>true</code>.</p>
 
-Now suppose $a$ = "$x > -5$" and $b$ = "$x > 0$". Does $a$ imply
-  $b$? No. If $x = -3$, then $a$ is `true`, but $b$ is `false`. So
-  $a \to b$ is `false`. $a$ being `true` should guarantee that $b$ is `true`.
+<h3>Checking IDs</h3>
+<p>Imagine being in a restaurant, and let $a$ = "The customer is drinking something alcoholic" and $b$ = "The customer is aged 21 or over." (This is a US-centric example, where the legal drinking age is 21.) You see four customers with drinks:</p>
 
-### Checking IDs
+<ol>
+  <li>One is drinking a beer.</li>
+  <li>One is drinking a soda.</li>
+  <li>One is age 25.</li>
+  <li>One is age 18.</li>
+</ol>
 
-Imagine being in a restaurant, and let $a$ = "The customer is drinking something alcoholic" and $b$ = "The customer is aged 21 or over." (This is a US-centric example, where the legal drinking age is 21.) You see four customers with drinks:
+<p>Whose drinks/IDs do you need to check to see if $a \to b$ = <code>true</code> for every customer? The answer is obvious, but let's check the truth table:</p>
 
-1.  One is drinking a beer.
-2.  One is drinking a soda.
-3.  One is age 25.
-4.  One is age 18.
+<table>
+  <tr><th>$a$</th><th>$b$</th><th>$a \to b$</th></tr>
+  <tr><td><code>Drinking beer</code></td><td><code>25 year old</code></td><td><code>true</code></td></tr>
+  <tr><td><code>Drinking beer</code></td><td><code>18 year old</code></td><td><code>false</code></td></tr>
+  <tr><td><code>Drinking soda</code></td><td><code>25 year old</code></td><td><code>true</code></td></tr>
+  <tr><td><code>Drinking soda</code></td><td><code>18 year old</code></td><td><code>true</code></td></tr>
+</table>
 
-Whose drinks/IDs do you need to check to see if $a \to b$ = `true` for every customer? The answer is obvious, but let's check the truth table:
+<p>As you can see, $a \to b$ is <code>false</code> if the customer is drinking a beer and is 18, so you should check the customer drinking a beer, and the customer who's 18. Notice that if $a$ is <code>false</code> (the customer's drinking a soda), then $a \to b$ = <code>true</code> no matter what $b$ is. This is the case for all implications. If $a$ is <code>false</code>, then $a \to b$ is always <code>true</code>. But if $a$ is <code>true</code>, then $a \to b$ is only <code>true</code> if $b$ is <code>true</code> as well.</p>
 
-$a$ | $b$ | $a \to b$
---- | --- | ---------
-Drinking beer | 25 year old | `true`
-Drinking beer | 18 year old | `false`
-Drinking soda | 25 year old | `true`
-Drinking soda | 18 year old | `true`
+<h2>Inverse, converse, and contrapositive</h2>
+<p>There are special names for when you rearrange or negate $a$ and $b$. Given $a \to b$:</p>
 
-As you can see, $a \to b$ is `false` if the customer is drinking a beer and is 18, so you should check the customer drinking a beer, and the customer who's 18\. Notice that if $a$ is `false` (the customer's drinking a soda), then $a \to b$ = `true` no matter what $b$ is. This is the case for all implications. If $a$ is `false`, then $a \to b$ is always `true`. But if $a$ is `true`, then $a \to b$ is only `true` if $b$ is `true` as well.
+<ul>
+  <li>$\neg a \to \neg b$ is the inverse.</li>
+  <li>$b \to a$ is the converse.</li>
+  <li>$\neg b \to \neg a$ is the contrapositive.</li>
+</ul>
 
-## Inverse, converse, and contrapositive
-There are special names for when you rearrange or negate $a$ and $b$. Given $a \to b$,
+<p>Suppose your friend tells you, "if it's sunny tomorrow, then I'll go for a run." Let's also say that there are only two possibilities for the weather: sun or rain. Here are the inverse, converse, and contrapositive of that statement:</p>
 
-* $\neg a \to \neg b$ is the inverse.
-* $b \to a$ is the converse.
-* $\neg b \to \neg a$ is the contrapositive.
+<ul>
+  <li>Inverse: "If it rains tomorrow, then I won't go for a run."</li>
+  <li>Converse: "If I go for a run tomorrow, then it's sunny."</li>
+  <li>Contrapositive: "If I don't go for a run tomorrow, then it rained."</li>
+</ul>
 
-Suppose your friend tells you, "if it's sunny tomorrow, then I'll go for a run." Let's also say that there are only two possibilities for the weather: sun or rain. Here are the inverse, converse, and contrapositive of that statement:
+<p>Suppose your friend's statement is <code>true</code>. Here are three tough questions:</p>
 
-* Inverse: "If it rains tomorrow, then I won't go for a run."
-* Converse: "If I go for a run tomorrow, then it's sunny."
-* Contrapositive: "If I don't go for a run tomorrow, then it rained."
+<ol>
+  <li>Must the inverse be <code>true</code>?</li>
+  <li>Must the converse be <code>true</code>?</li>
+  <li>And must the contrapositive be <code>true</code>?</li>
+</ol>
 
-Suppose your friend's statement is `true`. Here are three tough questions:
+<p>The answer is, surprisingly, that the contrapositive must be <code>true</code>, but neither the inverse nor the converse have to be <code>true</code>. In the next page of notes, we'll prove this. But, for now, let's think about it intuitively.</p>
 
-1. Must the inverse be `true`?
-2. Must the converse be `true`?
-3. And must the contrapositive be `true`?
+<p>Suppose your friend is a star runner who runs on most days, rain or shine. Your friend told you that if it didn't rain tomorrow, she would go for a run. But she didn't tell you what she would do if it didn't rain. She could stay at home, or she could go for a run anyway, in which case the inverse is <code>false</code>.</p>
 
-The answer is, surprisingly, that the contrapositive must be `true`, but neither the inverse nor the converse have to be `true`. In the next page of notes, we'll prove this. But, for now, let's think about it intuitively.
+<p>The converse isn't guaranteed to be <code>true</code> for the same reason. Your friend could have gone for a run whether it was rainy or not.</p>
 
-Suppose your friend is a star runner who runs on most days, rain or shine. Your friend told you that if it didn't rain tomorrow, she would go for a run. But she didn't tell you what she would do if it didn't rain. She could stay at home, or she could go for a run anyway, in which case the inverse is `false`.
+<p>Thinking about whether the contrapositive is always <code>true</code> is the hardest of them all. Either it was sunny or it rained.</p>
 
-The converse isn't guaranteed to be `true` for the same reason. Your friend could have gone for a run whether it was rainy or not.
+<ul>
+  <li>If it was sunny outside, then your friend must have gone for a run.</li>
+  <li>If it rained, your friend may have gone for a run, but also may not have.</li>
+</ul>
 
-Thinking about whether the contrapositive is always `true` is the hardest of them all. Either it was sunny or it rained.
-
-* If it was sunny outside, then your friend must have gone for a run.
-* If it rained, your friend may have gone for a run, but also may not have.
-
-So as we can see, the only time your friend wouldn't have gone for a run is if it was rainy outside.
+<p>So as we can see, the only time your friend wouldn't have gone for a run is if it was rainy outside.</p>
   
-## Questions
-
-
-1. Write out the truth table for $(\neg a) \lor b$. What do you notice? Can you explain why this makes sense?
-
-    $a$ | $b$ | $(\neg a) \lor b$
-    --- | --- | ---------
-    `true` | `true` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
-    `true` | `false` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
-    `false` | `true` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
-    `false` | `false` | <select><option value=""></option><option value="True">True</option><option value="False">False</option></select>
-
-2. There are four cards on a table. Each card has a side that's either red or blue, and a side with a number. Your friend tells you that if the card is red, then the other side must have an even number. The four cards you see are:
-
-    *   Red
-    *   2
-    *   Blue
-    *   1
-
-    Which cards do you need to flip over to see if your friend is right?
-
-3.  What is the inverse, the converse, and the contrapositive of "If a customer is drinking alcohol, he must be 21 or over"?
+<h2>Questions</h2>
+<ol>
+  <li>
+    <p>Write out the truth table for $(\neg a) \lor b$. What do you notice? Can you explain why this makes sense?</p>
+    <table>
+      <tr><th>$a$</th><th>$b$</th><th>$(\neg a) \lor b$</th></tr>
+      <tr><td><code>true</code></td><td><code>true</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
+      <tr><td><code>true</code></td><td><code>false</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
+      <tr><td><code>false</code></td><td><code>true</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
+      <tr><td><code>false</code></td><td><code>false</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
+    </table>
+  </li>
+  <li>
+    <p>There are four cards on a table. Each card has a side that's either red or blue, and a side with a number. Your friend tells you that if the card is red, then the other side must have an even number. The four cards you see are:</p>
+    <ul>
+      <li>Red</li>
+      <li>2</li>
+      <li>Blue</li>
+      <li>1</li>
+    </ul>
+    <p>Which cards do you need to flip over to see if your friend is right?</p>
+  </li>
+  <li>
+    <p>What is the inverse, the converse, and the contrapositive of "If a customer is drinking alcohol, he must be 21 or over"?
+  </li>
+</ul>
