@@ -60,27 +60,27 @@ This method of estimating the parameters of our model by maximizing the likeliho
 ## Sample complexity
 The number of coin flips, $N$, we need to get a good estimate of $\theta$, is called the *sample complexity*. This is analogous to time complexity, which we use to measure how long an algorithm takes. Instead of measuring time, we are measuring the number of samples we need to get a good estimate.
 
-One upper bound on the sample complexity is given by [Hoeffding's inequality](http://en.wikipedia.org/wiki/Hoeffding's_inequality). Let's say our estimate is $\hat{\theta}$ and the true probability of heads is $\theta^*$. Hoeffding's inequality tells us that for some $\epsilon > 0$:
+One upper bound on the sample complexity is given by [Hoeffding's inequality](http://en.wikipedia.org/wiki/Hoeffding's_inequality). Let's say our estimate is $\hat{\theta}$ and the true probability of heads is $\theta^\*$. Hoeffding's inequality tells us that for some $\epsilon > 0$:
 
 $$
-p(\lvert\theta^* - \hat{\theta}\rvert \ge \epsilon) \le 2 e^{-2 N \epsilon^2}
+p(\lvert\theta^\* - \hat{\theta}\rvert \ge \epsilon) \le 2 e^{-2 N \epsilon^2}
 $$
 
 This says that the probability that our estimate is off by more than $\epsilon$ decreases exponentially with respect to $N$, the number of coin flips we do. Let's rewrite this so that $\epsilon$ is an upper bound on our error, instead:
 $$
 \begin{align}
-  -p(\lvert\theta^* - \hat{\theta}\rvert \ge \epsilon) & \ge -2 e^{-2 N \epsilon^2}\\\\
-  1-p(\lvert\theta^* - \hat{\theta}\rvert \ge \epsilon) & \ge 1 - 2 e^{-2 N \epsilon^2}\\\\
-  p(\lvert\theta^* - \hat{\theta}\rvert \lt \epsilon) & \ge 1 - 2 e^{-2 N \epsilon^2}
+  -p(\lvert\theta^\* - \hat{\theta}\rvert \ge \epsilon) & \ge -2 e^{-2 N \epsilon^2}\\\\
+  1-p(\lvert\theta^\* - \hat{\theta}\rvert \ge \epsilon) & \ge 1 - 2 e^{-2 N \epsilon^2}\\\\
+  p(\lvert\theta^\* - \hat{\theta}\rvert \lt \epsilon) & \ge 1 - 2 e^{-2 N \epsilon^2}
 \end{align}
 $$
 
 Let's call the probability $p$ for now. Solving for $N$:
-$$
-  N \ge \frac{\ln(2) - \ln(1-p)}{2 \epsilon^2}
-$$
+    $$
+      N \ge \frac{\ln(2) - \ln(1-p)}{2 \epsilon^2}
+    $$
 
-For example, if you'd like to be $p=0.95$ sure that your estimate of $\theta$ is within $\epsilon$ of $\theta^*$, then you need to do $N$ = 184.4 flips. This is, however, a loose bound -- in practice, fewer flips may be needed to get a good estimate.
+For example, if you'd like to be $p=0.95$ sure that your estimate of $\theta$ is within $\epsilon$ of $\theta^\*$, then you need to do $N$ = 184.4 flips. This is, however, a loose bound -- in practice, fewer flips may be needed to get a good estimate.
 
 ## Continuous variables
 
