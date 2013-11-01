@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{page.title}}</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/cse101.css">
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">CSE 101</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="document">
+        {{content}}
+        {% include footer.html %}
+      </div>
+    </div>
+    <script src="/js/ga.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
