@@ -3,11 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>{{page.title}}</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/css/cse101.css" rel="stylesheet" />
-    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/cse101.css">
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">CSE 101</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="document">
+        {{content}}
+        {% include footer.html %}
+      </div>
+    </div>
     <script src="/js/ga.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
     <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
@@ -19,18 +34,6 @@
         }
       });
     </script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-          <a class="brand" href="/">CSE 101</a>
-        </div>
-      </div>
-      <div class="document">
-        {{content}}
-        {% include footer.html %}
-      </div>
-    </div>
+
   </body>
 </html>

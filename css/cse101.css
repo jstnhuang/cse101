@@ -1,28 +1,21 @@
 body {
-  padding-top: 40px; /* Fixed navbar. */
+  padding-top: 60px; /* Fixed navbar. */
 }
-.document {
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  margin: 20px 0px;
-  padding: 10px;
+
+body > .navbar .navbar-brand {
+  color: #333;
 }
 
 .document > h1 {
   margin-top: 0px;
 }
 
-.footer {
-  border-top: 1px solid #555;
-  font-size: 0.75em;
-  padding-top: 10px;
-}
-
 .table {
   width: auto;
 }
 
-.container > .navbar .brand {
-  color: #333;
-  margin-left: 10px;
+.footer {
+  border-top: 1px solid #555;
+  font-size: 0.75em;
+  padding: 10px 0px;
 }
