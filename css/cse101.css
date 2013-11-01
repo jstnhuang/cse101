@@ -1,0 +1,20 @@
+.document {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  margin: 20px 0px;
+  padding: 10px;
+}
+
+.document > h1 {
+  margin-top: 0px;
+}
+
+.footer {
+  border-top: 1px solid #555;
+  font-size: 0.75em;
+  padding-top: 10px;
+}
+
+.table {
+  width: auto;
+}

@@ -7,25 +7,11 @@
     <link href="/css/bootstrap-responsive.min.css" rel="stylesheet" />
     <link href="/css/cse101.css" rel="stylesheet" />
     <script src="/js/bootstrap.min.js"></script>
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] },
-        TeX: {
-          Macros: {
-            argmax: "{\\arg\\!\\max}"
-          }
-        }
-      });
-    </script>
+    <style>
+    </style>
   </head>
   <body>
     <div class="container">
-      <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-          <a class="brand" href="/">CSE 101</a>
-        </div>
-      </div>
       <div class="document">
         {{content}}
         {% include footer.html %}

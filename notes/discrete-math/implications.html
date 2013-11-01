@@ -16,7 +16,7 @@ layout: note
 
 <p>What it means for $a$ <code>implies</code> $b$ to be <code>true</code> is that if $a$ is <code>true</code>, then $b$ must also be <code>true</code>. If $a$ is <code>false</code>, then it doesn't matter what $b$ is -- $a$ <code>implies</code> $b$ will be <code>true</code>. Here it is in a truth table:</p>
 
-<table>
+<table class="table">
   <tr><th>$a$</th><th>$b$</th><th>$a \to b$</th></tr>
   <tr><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>
   <tr><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td></tr>
@@ -44,12 +44,12 @@ layout: note
 
 <p>Whose drinks/IDs do you need to check to see if $a \to b$ = <code>true</code> for every customer? The answer is obvious, but let's check the truth table:</p>
 
-<table>
+<table class="table">
   <tr><th>$a$</th><th>$b$</th><th>$a \to b$</th></tr>
-  <tr><td><code>Drinking beer</code></td><td><code>25 year old</code></td><td><code>true</code></td></tr>
-  <tr><td><code>Drinking beer</code></td><td><code>18 year old</code></td><td><code>false</code></td></tr>
-  <tr><td><code>Drinking soda</code></td><td><code>25 year old</code></td><td><code>true</code></td></tr>
-  <tr><td><code>Drinking soda</code></td><td><code>18 year old</code></td><td><code>true</code></td></tr>
+  <tr><td>Drinking beer</td><td>25 year old</td><td><code>true</code></td></tr>
+  <tr><td>Drinking beer</td><td>18 year old</td><td><code>false</code></td></tr>
+  <tr><td>Drinking soda</td><td>25 year old</td><td><code>true</code></td></tr>
+  <tr><td>Drinking soda</td><td>18 year old</td><td><code>true</code></td></tr>
 </table>
 
 <p>As you can see, $a \to b$ is <code>false</code> if the customer is drinking a beer and is 18, so you should check the customer drinking a beer, and the customer who's 18. Notice that if $a$ is <code>false</code> (the customer's drinking a soda), then $a \to b$ = <code>true</code> no matter what $b$ is. This is the case for all implications. If $a$ is <code>false</code>, then $a \to b$ is always <code>true</code>. But if $a$ is <code>true</code>, then $a \to b$ is only <code>true</code> if $b$ is <code>true</code> as well.</p>
@@ -98,7 +98,7 @@ layout: note
 <ol>
   <li>
     <p>Write out the truth table for $(\neg a) \lor b$. What do you notice? Can you explain why this makes sense?</p>
-    <table>
+    <table class="table">
       <tr><th>$a$</th><th>$b$</th><th>$(\neg a) \lor b$</th></tr>
       <tr><td><code>true</code></td><td><code>true</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
       <tr><td><code>true</code></td><td><code>false</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
