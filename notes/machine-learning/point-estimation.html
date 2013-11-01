@@ -38,7 +38,7 @@ $$
 \hat{\theta} = \argmax_\theta \ln \left(\theta^{n_h} (1 - \theta)^{n_t}\right)
 $$
 
-<p>Our approach to computing the argmax is from calculus: we will take the derivative of the equation, and set it to 0. In a more rigorous setting, we would check to make sure that we've actually found a local maximum, but we will skip that here.</p>
+<p>Our approach to computing the argmax is from calculus: we will take the derivative of the equation, and set it to 0. In a more rigorous setting, we would check to make sure that we've actually found a local maximum, but we won't bother to do that now, because likelihood function is <em>convex</em> (more on that later).</p>
 
 $$
 \begin{align}
@@ -66,7 +66,7 @@ $$
 p(\lvert\theta^* - \hat{\theta}\rvert \ge \epsilon) \le 2 e^{-2 N \epsilon^2}
 $$
 
-<p>This says that the probability that our estimate is off by more than $\epsilon$ decreases exponentially with respect to $N$, the number of coin flips we do. Let's rewrite this so that $\epsilon$ is an upper bound on our error, instead:</p>
+<p>This says that the probability of our estimate being wrong by more than $\epsilon$ decreases exponentially with respect to $N$, the number of coin flips we do. Let's rewrite this so that $\epsilon$ is an upper bound on our error, instead:</p>
 $$
 \begin{align}
   -p(\lvert\theta^* - \hat{\theta}\rvert \ge \epsilon) & \ge -2 e^{-2 N \epsilon^2}\\\\
@@ -85,7 +85,7 @@ $$
 <h2>Continuous variables</h2>
 <p>What if, instead of predicting the outcome of a coin flip, we want to predict a continuous variable? For example, let's say we want to predict the temperature tomorrow. We are given a dataset of tomorrow's date from years past (e.g., May 1, 2001; May 1, 2002; May 1, 2003; etc.).</p>
 
-<p>What should our model be? There are many ways to model this, but one way that will probably work well is the normal (a.k.a. Gaussian or "bell curve") distribution. The normal distribution assumes that the variable will most likely be close to the mean, $\mu$, and symmetrically spread out with some variance $\sigma^2$. The exact formula for the normal distribution is:</p>
+<p>What should our model be? There are many ways to model this, but one way that will probably work well is the <a href="http://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a> (a.k.a. Gaussian or "bell curve"). The normal distribution assumes that the variable will most likely be close to the mean, $\mu$, and symmetrically spread out with some variance $\sigma^2$. The exact formula for the normal distribution is:</p>
 
 $$f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
 
@@ -103,7 +103,7 @@ $$
 \end{align}
 $$
 
-<p>Setting the partial derivative of this with respect to $\mu$ and setting it equal to 0:</p>
+<p>We want to find $\mu$ and $\sigma$ that maximize this likelihood. Setting the partial derivative of this with respect to $\mu$ and setting it equal to 0:</p>
 $$
 \begin{align}
   \frac{\partial}{\partial \mu} \left[-N \ln(\sigma \sqrt{2 \pi}) + \sum_{i=1}^N \frac{-(x_i - \mu)^2}{2 \sigma^2}\right] &= \sum_{i=1}^N \frac{(x_i - \mu)}{\sigma^2} = 0 \\\\
