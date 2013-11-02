@@ -27,7 +27,7 @@ $$
 <p>Our model has just one parameter, $\theta$. We want to find the value of $\theta$ that best explains (i.e., maximizes the probability of) $D$. Let's call our estimate $\hat{\theta}$:</p>
 $$
 \begin{align}
-  \hat{\theta} & = \argmax_\theta p(D \mid \theta) \\\\
+  \hat{\theta} & = \argmax_\theta p(D \mid \theta) \\
     & = \argmax_\theta \theta^{n_h} (1 - \theta)^{n_t}
 \end{align}
 $$
@@ -42,13 +42,13 @@ $$
 
 $$
 \begin{align}
-  \frac{\partial}{\partial \theta} \ln \left(\theta^{n_h} (1 - \theta)^{n_t}\right) &= 0 \\\\
-  \frac{\partial}{\partial \theta} \left(\ln \theta^{n_h} + \ln (1 - \theta)^{n_t} \right) &= 0 \\\\
-  \frac{\partial}{\partial \theta} \ln \theta^{n_h} + \frac{\partial}{\partial \theta} \ln (1 - \theta)^{n_t} &= 0 \\\\
-  \frac{\partial}{\partial \theta} n_h \ln \theta + \frac{\partial}{\partial \theta} n_t \ln (1 - \theta) &= 0 \\\\
-  \frac{n_h}{\theta} - \frac{n_t}{1 - \theta} &= 0 \\\\
-  (1 - \theta)n_h - \theta n_t &= 0 \\\\
-  n_h - \theta n_h - \theta n_t &= 0 \\\\
+  \frac{\partial}{\partial \theta} \ln \left(\theta^{n_h} (1 - \theta)^{n_t}\right) &= 0 \\
+  \frac{\partial}{\partial \theta} \left(\ln \theta^{n_h} + \ln (1 - \theta)^{n_t} \right) &= 0 \\
+  \frac{\partial}{\partial \theta} \ln \theta^{n_h} + \frac{\partial}{\partial \theta} \ln (1 - \theta)^{n_t} &= 0 \\
+  \frac{\partial}{\partial \theta} n_h \ln \theta + \frac{\partial}{\partial \theta} n_t \ln (1 - \theta) &= 0 \\
+  \frac{n_h}{\theta} - \frac{n_t}{1 - \theta} &= 0 \\
+  (1 - \theta)n_h - \theta n_t &= 0 \\
+  n_h - \theta n_h - \theta n_t &= 0 \\
   \theta = \frac{n_h}{n_h + n_t}
 \end{align}
 $$
@@ -69,8 +69,8 @@ $$
 <p>This says that the probability of our estimate being wrong by more than $\epsilon$ decreases exponentially with respect to $N$, the number of coin flips we do. Let's rewrite this so that $\epsilon$ is an upper bound on our error, instead:</p>
 $$
 \begin{align}
-  -p(\lvert\theta^* - \hat{\theta}\rvert \ge \epsilon) & \ge -2 e^{-2 N \epsilon^2}\\\\
-  1-p(\lvert\theta^* - \hat{\theta}\rvert \ge \epsilon) & \ge 1 - 2 e^{-2 N \epsilon^2}\\\\
+  -p(\lvert\theta^* - \hat{\theta}\rvert \ge \epsilon) & \ge -2 e^{-2 N \epsilon^2}\\
+  1-p(\lvert\theta^* - \hat{\theta}\rvert \ge \epsilon) & \ge 1 - 2 e^{-2 N \epsilon^2}\\
   p(\lvert\theta^* - \hat{\theta}\rvert \lt \epsilon) & \ge 1 - 2 e^{-2 N \epsilon^2}
 \end{align}
 $$
@@ -97,8 +97,8 @@ $$f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
 <p>First, the log likelihood of the data set:</p>
 $$
 \begin{align}
-  P(X \mid \mu, \sigma) & = \left(\frac{1}{\sigma \sqrt{2 \pi}}\right)^N \prod_{i=1}^N e^{\frac{-(x_i - \mu)^2}{2 \sigma^2}} \\\\
-  \ln P(X \mid \mu, \sigma) & = \ln \left[\left(\frac{1}{\sigma \sqrt{2 \pi}}\right)^N \prod_{i=1}^N e^{\frac{-(x_i - \mu)^2}{2 \sigma^2}}\right] \\\\
+  P(X \mid \mu, \sigma) & = \left(\frac{1}{\sigma \sqrt{2 \pi}}\right)^N \prod_{i=1}^N e^{\frac{-(x_i - \mu)^2}{2 \sigma^2}} \\
+  \ln P(X \mid \mu, \sigma) & = \ln \left[\left(\frac{1}{\sigma \sqrt{2 \pi}}\right)^N \prod_{i=1}^N e^{\frac{-(x_i - \mu)^2}{2 \sigma^2}}\right] \\
     & = -N \ln(\sigma \sqrt{2 \pi}) + \sum_{i=1}^N \frac{-(x_i - \mu)^2}{2 \sigma^2}
 \end{align}
 $$
@@ -106,9 +106,9 @@ $$
 <p>We want to find $\mu$ and $\sigma$ that maximize this likelihood. Setting the partial derivative of this with respect to $\mu$ and setting it equal to 0:</p>
 $$
 \begin{align}
-  \frac{\partial}{\partial \mu} \left[-N \ln(\sigma \sqrt{2 \pi}) + \sum_{i=1}^N \frac{-(x_i - \mu)^2}{2 \sigma^2}\right] &= \sum_{i=1}^N \frac{(x_i - \mu)}{\sigma^2} = 0 \\\\
-  \sum_{i=1}^N (x_i - \mu) = 0 \\\\
-  \sum_{i=1}^N x_i = N \mu \\\\
+  \frac{\partial}{\partial \mu} \left[-N \ln(\sigma \sqrt{2 \pi}) + \sum_{i=1}^N \frac{-(x_i - \mu)^2}{2 \sigma^2}\right] &= \sum_{i=1}^N \frac{(x_i - \mu)}{\sigma^2} = 0 \\
+  \sum_{i=1}^N (x_i - \mu) = 0 \\
+  \sum_{i=1}^N x_i = N \mu \\
   \mu = \frac{1}{N} \sum_{i=1}^N x_i
 \end{align}
 $$
@@ -119,8 +119,8 @@ $$
 
 $$
 \begin{align}
-  \frac{\partial}{\partial \sigma} \left[-N \ln(\sigma \sqrt{2 \pi}) + \sum_{i=1}^N \frac{-(x_i - \mu)^2}{2 \sigma^2}\right] &= \frac{-N}{\sigma} + \sum_{i=1}^N \frac{(x_i - \mu)^2}{\sigma^3} = 0 \\\\
-  \sum_{i=1}^N \frac{(x_i - \mu)^2}{\sigma^3} = \frac{N}{\sigma} \\\\
+  \frac{\partial}{\partial \sigma} \left[-N \ln(\sigma \sqrt{2 \pi}) + \sum_{i=1}^N \frac{-(x_i - \mu)^2}{2 \sigma^2}\right] &= \frac{-N}{\sigma} + \sum_{i=1}^N \frac{(x_i - \mu)^2}{\sigma^3} = 0 \\
+  \sum_{i=1}^N \frac{(x_i - \mu)^2}{\sigma^3} = \frac{N}{\sigma} \\
   \sigma^2 = \frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2
 \end{align}
 $$
