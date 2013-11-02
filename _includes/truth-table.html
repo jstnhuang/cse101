@@ -3,5 +3,5 @@
 <script src="/js/truthtable.js"></script>
 <script>
   truthTable = new TruthTable({{include.vars}}, {{include.exprs}});
-  truthTable.render('{{include.id}}');
+  truthTable.render('{{include.id}}', {{include.hiddenExprs}});
 </script>

@@ -82,7 +82,7 @@ TruthTable.prototype.latex = function(expr) {
   }
 }
 
-TruthTable.prototype.render = function(divId) {
+TruthTable.prototype.render = function(divId, hiddenExprs) {
   var table = $('#' + divId);
   var instantiations = this.instantiations();
   var header = $('<tr>');
@@ -107,10 +107,18 @@ TruthTable.prototype.render = function(divId) {
       row.append(col);
     }
     for (exprIndex in this.exprs) {
-      var expr = this.exprs[exprIndex];
-      var val = this.evaluate(expr, symtab);
-      var col = '<td><code>' + val + '</code></td>';
-      row.append(col);
+      if (
+        hiddenExprs.hasOwnProperty(exprIndex)
+        && hiddenExprs[exprIndex] === true
+      ) {
+        var col = '<td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td>';
+        row.append(col);
+      } else {
+        var expr = this.exprs[exprIndex];
+        var val = this.evaluate(expr, symtab);
+        var col = '<td><code>' + val + '</code></td>';
+        row.append(col);
+      }
     }
     table.append(row);
   }
