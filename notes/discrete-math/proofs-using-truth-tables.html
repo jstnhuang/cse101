@@ -7,6 +7,8 @@ layout: note
 <p>When two boolean expressions have the same truth table, they're <em>equivalent</em>. In this section, we'll prove certain facts about boolean logic that will be helpful.</p>
 
 <h2>De Morgan's laws</h2>
+{% include truth-table.html id="demorgan-and-1" vars="['A', 'B']" exprs="[new TTAnd('A', 'B'), new TTNot(new TTAnd('A', 'B'))]" %}
+{% include truth-table.html id="demorgan-and-2" vars="['A', 'B']" exprs="[new TTNot('A'), new TTNot('B'), new TTOr(new TTNot('A'), new TTNot('B'))]" %}
 <h2>Implications in terms of <code>not</code> and <code>or</code></h2>
 <h2>Inverse, converse, and contrapositive revisited</h2>
 <h2>If and only if</h2>
