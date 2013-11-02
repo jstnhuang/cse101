@@ -148,7 +148,7 @@ function TTNand(a, b) {
 }
 
 function TTNor(a, b) {
-  return new TTNot(new TTNor(a, b));
+  return new TTNot(new TTOr(a, b));
 }
 
 function TTImplies(a, b) {
