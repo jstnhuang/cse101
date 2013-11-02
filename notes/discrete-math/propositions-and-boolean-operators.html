@@ -25,48 +25,27 @@ layout: note
 <p>We can combine two propositions together to form a new proposition. We call these <em>operations</em>. The most common operations are <code>not</code>, <code>and</code>, <code>or</code>, <code>xor</code>, and <code>implies</code>.</p>
 
 <h3>Not</h3>
-<p><code>Not</code> is very simple. Suppose our proposition is "I was born in December." Let's call this proposition $a$. Then <code>not</code> $a$ is something like "I was not born in December." Something that is <code>not true</code> is <code>false</code>, and something that is <code>not false</code> is <code>true</code>.</p>
+<p><code>Not</code> is very simple. Suppose our proposition is "I was born in December." Let's call this proposition $A$. Then <code>not</code> $A$ is something like "I was not born in December." Something that is <code>not true</code> is <code>false</code>, and something that is <code>not false</code> is <code>true</code>.</p>
 
 <p>The common mathematical notation for <code>not</code> is $\neg A$.</p>
 
 <h3>And</h3>
-<p><code>And</code> is also easy to understand. Suppose $a$ is "I was born in December" and $b$ is "I was born on the 5th day of the month." Then $a$ <code>and</code> $b$ (notated $a \land b$) is only <code>true</code> if you were born on December 5.</p>
+<p><code>And</code> is also easy to understand. Suppose $A$ is "I was born in December" and $B$ is "I was born on the 5th day of the month." Then $A$ <code>and</code> $B$ (notated $A \land B$) is only <code>true</code> if you were born on December 5.</p>
 
-<p>Sometimes we like to write out what are called truth tables. This truth table lists all possible values of $a$ and $b$ in the first two columns, and then shows the result of $a \land b$ on the right:</p>
-
-<table class="table">
-  <tr><th>$a$</th><th>$b$</th><th>$a \land b$</th></tr>
-  <tr><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>
-  <tr><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td></tr>
-  <tr><td><code>false</code></td><td><code>true</code></td><td><code>false</code></td></tr>
-  <tr><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
-</table>
+<p>Sometimes we like to write out what are called truth tables. This truth table lists all possible values of $A$ and $B$ in the first two columns, and then shows the result of $A \land B$ on the right:</p>
+{% include truth-table.html id="and" vars="['A', 'B']" exprs="[new TTAnd('A', 'B')]" hiddenExprs="{}" %}
 
 <h3>Or</h3>
-<p>When discussing logic, <code>or</code> means something a little bit different than how we normally use it. For example, when you say, "You can have a slice of cake for dessert, or you can have a slice of pie," you don't mean they can have both. But, in logic, $a$ <code>or</code> $b$ (notated $a \lor b$) means either $a$ is <code>true</code>, or $b$ is <code>true</code>, or both are <code>true</code>.</p>
+<p>When discussing logic, <code>or</code> means something a little bit different than how we normally use it. For example, when you say, "You can have a slice of cake for dessert, or you can have a slice of pie," you don't mean they can have both. But, in logic, $A$ <code>or</code> $B$ (notated $A \lor B$) means either $A$ is <code>true</code>, or $B$ is <code>true</code>, or both are <code>true</code>.</p>
 
 <p>The truth table for <code>or</code> looks like this:</p>
-
-<table class="table">
-  <tr><th>$a$</th><th>$b$</th><th>$a \lor b$</th></tr>
-  <tr><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>
-  <tr><td><code>true</code></td><td><code>false</code></td><td><code>true</code></td></tr>
-  <tr><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>
-  <tr><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
-</table>
+{% include truth-table.html id="or" vars="['A', 'B']" exprs="[new TTOr('A', 'B')]" hiddenExprs="{}" %}
 
 <h3>Xor</h3>
-<p>In our previous example, we said "You can have a slice of cake, or a slice of pie," and by that we meant that they couldn't have both. This is what <code>xor</code> (exclusive-or) is. $a$ <code>xor</code> $b$ (notated $a \oplus b$) is only <code>true</code> if $a$ is <code>true</code>, or $b$ is <code>true</code>, but not both. Another way to think about it is that $a$ <code>xor</code> $b$ is only <code>true</code> if $a$ and $b$ have different truth values.</p>
+<p>In our previous example, we said "You can have a slice of cake, or a slice of pie," and by that we meant that they couldn't have both. This is what <code>xor</code> (exclusive-or) is. $A$ <code>xor</code> $B$ (notated $A \oplus B$) is only <code>true</code> if $A$ is <code>true</code>, or $B$ is <code>true</code>, but not both. Another way to think about it is that $A$ <code>xor</code> $B$ is only <code>true</code> if $A$ and $B$ have different truth values.</p>
 
-<p>Here's the truth table for X<code>or</code>:</p>
-
-<table class="table">
-  <tr><th>$a$</th><th>$b$</th><th>$a \oplus b$</th></tr>
-  <tr><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td></tr>
-  <tr><td><code>true</code></td><td><code>false</code></td><td><code>true</code></td></tr>
-  <tr><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>
-  <tr><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
-</table>
+<p>Here's the truth table for <code>xor</code>:</p>
+{% include truth-table.html id="xor" vars="['A', 'B']" exprs="[new TTXor('A', 'B')]" hiddenExprs="{}" %}
 
 <h3>Nand and nor</h3>
 <p><code>Nand</code> and <code>nor</code> mean <code>not and</code> and <code>not or</code>. They take on the opposite truth values of <code>and</code> and <code>or</code>.</p>
@@ -77,34 +56,14 @@ layout: note
 <h2>Questions</h2>
 <ol>
   <li>
-    <p>Here's an empty truth table with two variables. Fill in the last column with some values. How many possible ways are there to fill out the last column? (This is the number of possible two-variable boolean functions.)</p>
-
-    <table class="table">
-      <tr><th>$a$</th><th>$b$</th><th>$f(a, b)$</th></tr>
-      <tr><td><code>true</code></td><td><code>true</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-      <tr><td><code>true</code></td><td><code>false</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-      <tr><td><code>false</code></td><td><code>true</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-      <tr><td><code>false</code></td><td><code>false</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-    </table>
+    <p>How many possible ways are there to fill out a truth table with two variables? (This is the number of possible two-variable boolean functions.)</p>
   </li>
   <li>
     <p>What is the truth table for <code>nand</code>?</p>
-    <table class="table">
-      <tr><th>$a$</th><th>$b$</th><th>$\neg (a \land b)$</th></tr>
-      <tr><td><code>true</code></td><td><code>true</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-      <tr><td><code>true</code></td><td><code>false</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-      <tr><td><code>false</code></td><td><code>true</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-      <tr><td><code>false</code></td><td><code>false</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-    </table>
+    {% include truth-table.html id="nand" vars="['A', 'B']" exprs="[new TTNand('A', 'B')]" hiddenExprs="{0: true}" %}
   </li>
   <li>
     <p>What is the truth table for <code>nor</code>?</p>
-    <table class="table">
-      <tr><th>$a$</th><th>$b$</th><th>$\neg (a \lor b)$</th></tr>
-      <tr><td><code>true</code></td><td><code>true</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-      <tr><td><code>true</code></td><td><code>false</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-      <tr><td><code>false</code></td><td><code>true</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-      <tr><td><code>false</code></td><td><code>false</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-    </table>
+    {% include truth-table.html id="nor" vars="['A', 'B']" exprs="[new TTNor('A', 'B')]" hiddenExprs="{0: true}" %}
   </li>
 </ol>
