@@ -1,0 +1,87 @@
+---
+title: Naive Bayes
+layout: note
+---
+
+<h1>{{page.title}}</h1>
+<p>A <em>classifier</em> takes in some data as input, and outputs a prediction. For example, we might be interested in predicting whether it will rain on a given day, given some data. The point estimation approach from before is the simplest possible classifier -- we just treat rain or no rain like heads and tails on a biased coin. If we know that it rains 90 days out of the year, then we could simply say the probability of rain is $\frac{90}{365}$ and the probability of no rain is $\frac{275}{365}$. If we predict that it won't rain everyday, then we'll be right 275 times a year (76.4%)! That doesn't sound bad, but, of course, we can do better.</p>
+
+<p>Naive Bayes is a step up from point estimation, but is still very simple.</p>
+
+<h2>Features</h2>
+Suppose we now have some weather data that doesn't just tell us whether it rained or not, but also some additional, potentially relevant data. We call these *features*. For example, our features might be:</p>
+<ol>
+  <li>Whether it rained the year before (1 = true, 0 = false)</li>
+  <li>Whether it rained two years before (1 = true, 0 = false)</li>
+  <li>Whether it rained the day before (1 = true, 0 = false)</li>
+  <li>Whether it rained two days before (1 = true, 0 = false)</li>
+  <li>The average temperature of the day (degrees Fahrenheit)</li>
+  <li>The month (1, 2, ..., 12)</li>
+  <li>The day of the month (1, 2, ..., 31)</li>
+  <li>The day of the week (1, 2, ..., 7)</li>
+</ol>
+
+<p>One important thing to note about features is the set of values the features can take on. A feature like "whether it rained the day before" can only take on one of two values: true or false. "The month" can take on 12 values, and "the average temperature" can take on an infinite number of values! To make the temperature take on a finite set of values, we can restrict its precision to, say, 10s of degrees Fahrenheit. So for example, instead of saying the temperature is 68.41 degrees, we just say it's 6, and if the temperature is 32 degrees, we say it's 3.</p>
+
+<p>We can put all these features together in a *feature vector*. So an example feature vector could be (1, 1, 1, 0, 6, 10, 18, 5). Suppose the temperature takes on 12 values (below 0, in the 0's, in the 10's, ..., in the 90's, more than 100). The *feature space* is the set of all possible values the feature vector can take on. In our example, the size of our feature space is $2 \cdot 2 \cdot 2 \cdot 2 \cdot 12 \cdot 12 \cdot 31 \cdot 7 = 499968$. The feature space is already quite large in our example, and it's not uncommon to have hundreds or thousands of features in practice.</p>
+
+<p>Another important thing to note is that not all the features are necessarily useful. If someone asked you to predict whether it would rain on some day that was Monday, the 17th of the month, you'd have a hard time making that guess.</p>
+
+<h2>Bayesian learning</h2>
+<p>Let's say whether it rains or not is $y$. If $y=1$, then it will rain, and if $y=0$, then it won't. We also have our feature vector, $X = (x_1, x_2, \ldots, x_m)$. Now given a feature vector, we'd like to compute $p(y=1 \mid x)$ when given some $x \in X$.</p>
+
+<p>In the point estimation approach, we would simply look up how many times it rained when $x$ was true. However, it might be the case that $x$ has never been true in our data before, since the feature space is so large. Instead of trying to compute $p(y \mid x)$ directly, we can try and compute it in an alternate way using Bayes' rule:</p>
+
+$$
+  p(y \mid x) = \frac{p(x \mid y) p(y)}{p(x)}
+$$
+
+<p>Our prediction will be the value of $y$ that maximizes this probability:</p>
+
+$$
+\begin{align}
+  \argmax_y \frac{p(x \mid y) p(y)}{p(x)} = \argmax_y p(x \mid y) p(y)
+\end{align}
+$$
+
+<p>$p(y)$ is called the *prior*. It's exactly the same as what we did in point estimation. If, in our data set, it rained on 25% of the days, then $p(y=1) = 0.25$ and $p(y=0) = 0.75$.</p>
+
+<h3>Estimating $p(x \mid y)$</h3>
+<p>$p(x \mid y) = p(x_1, x_2, \ldots, x_m \mid y)$ is called the *class model*. It's hard to estimate this from data, because again, there are so many possible values of $x$. The way Naive Bayes deals with this problem is to make the assumption that all the features are independent. In all likelihood, many of the features are not independent. For example, "whether it rained yesterday" and "whether it rained two days ago" are probably not independent of each other. However, it turns out that Naive Bayes can still produce a useful classifier for certain problems.</p>
+
+<p>If we assume all the features are independent of each other, then we get:</p>
+
+$$
+\begin{align}
+  p(x \mid y) = p(x_1, x_2, \ldots, x_m \mid y) &= p(x_1 \mid y) \cdot p(x_2 \mid y) \cdot \ldots \cdot p(x_m \mid y) \\
+  &= \prod_{j=1}^m p(x_j \mid y)
+\end{align}
+$$
+
+<p>This is much simpler because now we only need to compute $p(x_j \mid y)$ for each feature $j$. The space of a single $x_j$ in our example is much smaller than the size of the entire feature space. For example, our largest feature, "day of the month," only takes on one of 31 values -- much less than 499968 for the entire space.</p>
+
+<p>In other words, the estimate for $p(x_j=x_j' \mid y=y')$ is the count over all examples in our data set where $x_j=x_j'$ when $y=y'$, over the total number of times $y=y'$ in the data set. In a formula:</p>
+
+$$
+  p(x_j=x_j' \mid y=y') = \frac{\sum_{i=1}^N I(x_{ij}=x_j' \land y_i=y')}{\sum_{i=1}^N I(y_i=y')}
+$$
+
+<p>Note $I$ is the identity function. So, for every value of $y$ ($y=1$ and $y=0$), compute $p(x_j=x_j' \mid y)$, and store all those numbers in a table. When it comes time to predict a value of $y$, simply compare which number is higher:</p>
+
+$$
+\begin{align}
+  p(y=1 \mid x) &= p(y=1) \cdot \prod_{j=1}^m p(x_j \mid y=1) \\
+  p(y=0 \mid x) &= p(y=0) \cdot \prod_{j=1}^m p(x_j \mid y=0)
+\end{align}
+$$
+
+<p>And output the value of $y$ that gave you the higher probability. One practical note is that since multiplying lots of probabilities can lead to really small numbers and possible underflow, you may want to add the log probabilities of all these numbers instead.</p>
+
+$$
+\begin{align}
+  \ln p(y=1 \mid x) &= \ln p(y=1) + \sum_{j=1}^m \ln p(x_j \mid y=1) \\
+  \ln p(y=0 \mid x) &= \ln p(y=0) + \sum_{j=1}^m \ln p(x_j \mid y=0)
+\end{align}
+$$
+
+<p>Another practical consideration is that if you have little data, maximum likelihood will not give you a good estimate. You may want to add on a prior, such as the Beta distribution, and use the MAP estimate instead, as discussed in the point estimation notes.</p>
