@@ -4,29 +4,29 @@ layout: note
 ---
 
 <h1>{{page.title}}</h1>
-<p><code>Implies</code> can be a difficult operator to understand. But, we will use it often. There are many different ways to say $a$ <code>implies</code> $b$ (notated $a \to b$):</p>
+<p><code>Implies</code> can be a difficult operator to understand. But, we will use it often. There are many different ways to say $A$ <code>implies</code> $B$ (notated $A \to B$):</p>
 
 <ul>
-  <li>$a$ <code>implies</code> $b$</li>
-  <li>$b$ is implied by $a$</li>
-  <li>$a \to b$</li>
-  <li>If $a$, then $b$</li>
-  <li>$b$ if $a$</li>
+  <li>$A$ <code>implies</code> $B$</li>
+  <li>$B$ is implied by $A$</li>
+  <li>$A \to B$</li>
+  <li>If $A$, then $B$</li>
+  <li>$B$ if $A$</li>
 </ul>
 
-<p>What it means for $a$ <code>implies</code> $b$ to be <code>true</code> is that if $a$ is <code>true</code>, then $b$ must also be <code>true</code>. If $a$ is <code>false</code>, then it doesn't matter what $b$ is -- $a$ <code>implies</code> $b$ will be <code>true</code>. Here it is in a truth table:</p>
+<p>What it means for $A$ <code>implies</code> $B$ to be <code>true</code> is that if $A$ is <code>true</code>, then $B$ must also be <code>true</code>. If $A$ is <code>false</code>, then it doesn't matter what $B$ is -- $A$ <code>implies</code> $B$ will be <code>true</code>. Here it is in a truth table:</p>
 {% include truth-table.html id="implies" vars="['A', 'B']" exprs="[new TTImplies('A', 'B')]" hiddenExprs="{}" %}
 
 <h2>Examples</h2>
 <p>Some examples may help clarify how this works.</p>
 
 <h3>Number line</h3>
-<p>Suppose $a$ = "$x > 5$" and $b$ = "$x > 0$". In this case, $a \to b$ = <code>true</code>, because whenever you have a number greater than 5, it must also be greater than 0.</p>
+<p>Suppose $A$ = "$x > 5$" and $B$ = "$x > 0$". In this case, $A \to B$ = <code>true</code>, because whenever you have a number greater than 5, it must also be greater than 0.</p>
 
-<p>Now suppose $a$ = "$x > -5$" and $b$ = "$x > 0$". Does $a$ imply $b$? No. If $x = -3$, then $a$ is <code>true</code>, but $b$ is <code>false</code>. So $a \to b$ is <code>false</code>. $a$ being <code>true</code> should guarantee that $b$ is <code>true</code>.</p>
+<p>Now suppose $A$ = "$x > -5$" and $B$ = "$x > 0$". Does $A$ imply $B$? No. If $x = -3$, then $A$ is <code>true</code>, but $B$ is <code>false</code>. So $A \to B$ is <code>false</code>. $A$ being <code>true</code> should guarantee that $B$ is <code>true</code>.</p>
 
 <h3>Checking IDs</h3>
-<p>Imagine being in a restaurant, and let $a$ = "The customer is drinking something alcoholic" and $b$ = "The customer is aged 21 or over." (This is a US-centric example, where the legal drinking age is 21.) You see four customers with drinks:</p>
+<p>Imagine being in a restaurant, and let $A$ = "The customer is drinking something alcoholic" and $B$ = "The customer is aged 21 or over." (This is a US-centric example, where the legal drinking age is 21.) You see four customers with drinks:</p>
 
 <ol>
   <li>One is drinking a beer.</li>
@@ -35,25 +35,25 @@ layout: note
   <li>One is age 18.</li>
 </ol>
 
-<p>Whose drinks/IDs do you need to check to see if $a \to b$ = <code>true</code> for every customer? The answer is obvious, but let's check the truth table:</p>
+<p>Whose drinks/IDs do you need to check to see if $A \to B$ = <code>true</code> for every customer? The answer is obvious, but let's check the truth table:</p>
 
 <table class="table">
-  <tr><th>$a$</th><th>$b$</th><th>$a \to b$</th></tr>
+  <tr><th>$A$</th><th>$B$</th><th>$A \to B$</th></tr>
   <tr><td>Drinking beer</td><td>25 year old</td><td><code>true</code></td></tr>
   <tr><td>Drinking beer</td><td>18 year old</td><td><code>false</code></td></tr>
   <tr><td>Drinking soda</td><td>25 year old</td><td><code>true</code></td></tr>
   <tr><td>Drinking soda</td><td>18 year old</td><td><code>true</code></td></tr>
 </table>
 
-<p>As you can see, $a \to b$ is <code>false</code> if the customer is drinking a beer and is 18, so you should check the customer drinking a beer, and the customer who's 18. Notice that if $a$ is <code>false</code> (the customer's drinking a soda), then $a \to b$ = <code>true</code> no matter what $b$ is. This is the case for all implications. If $a$ is <code>false</code>, then $a \to b$ is always <code>true</code>. But if $a$ is <code>true</code>, then $a \to b$ is only <code>true</code> if $b$ is <code>true</code> as well.</p>
+<p>As you can see, $A \to B$ is <code>false</code> if the customer is drinking a beer and is 18, so you should check the customer drinking a beer, and the customer who's 18. Notice that if $A$ is <code>false</code> (the customer's drinking a soda), then $A \to B$ = <code>true</code> no matter what $B$ is. This is the case for all implications. If $A$ is <code>false</code>, then $A \to B$ is always <code>true</code>. But if $A$ is <code>true</code>, then $A \to B$ is only <code>true</code> if $B$ is <code>true</code> as well.</p>
 
 <h2>Inverse, converse, and contrapositive</h2>
-<p>There are special names for when you rearrange or negate $a$ and $b$. Given $a \to b$:</p>
+<p>There are special names for when you rearrange or negate $A$ and $B$. Given $A \to B$:</p>
 
 <ul>
-  <li>$\neg a \to \neg b$ is the inverse.</li>
-  <li>$b \to a$ is the converse.</li>
-  <li>$\neg b \to \neg a$ is the contrapositive.</li>
+  <li>$\neg A \to \neg B$ is the inverse.</li>
+  <li>$B \to A$ is the converse.</li>
+  <li>$\neg B \to \neg A$ is the contrapositive.</li>
 </ul>
 
 <p>Suppose your friend tells you, "if it's sunny tomorrow, then I'll go for a run." Let's also say that there are only two possibilities for the weather: sun or rain. Here are the inverse, converse, and contrapositive of that statement:</p>
@@ -90,7 +90,7 @@ layout: note
 <h2>Questions</h2>
 <ol>
   <li>
-    <p>Write out the truth table for $(\neg a) \lor b$. What do you notice? Can you explain why this makes sense?</p>
+    <p>Write out the truth table for $(\neg a) \lor B$. What do you notice? Can you explain why this makes sense?</p>
     {% include truth-table.html id="implies-formula" vars="['A', 'B']" exprs="[new TTNot('A'), new TTOr(new TTNot('A'), 'B')]" hiddenExprs="{1: true}" %}
   </li>
   <li>
