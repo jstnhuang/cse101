@@ -60,10 +60,10 @@ layout: note
   </li>
   <li>
     <p>What is the truth table for <code>nand</code>?</p>
-    {% include truth-table.html id="nand" vars="['A', 'B']" exprs="[new TTNand('A', 'B')]" hiddenExprs="{0: true}" %}
+    {% include truth-table.html id="nand" vars="['A', 'B']" exprs="[new TTAnd('A', 'B'), new TTNand('A', 'B')]" hiddenExprs="{1: true}" %}
   </li>
   <li>
     <p>What is the truth table for <code>nor</code>?</p>
-    {% include truth-table.html id="nor" vars="['A', 'B']" exprs="[new TTNor('A', 'B')]" hiddenExprs="{0: true}" %}
+    {% include truth-table.html id="nor" vars="['A', 'B']" exprs="[new TTOr('A', 'B'), new TTNor('A', 'B')]" hiddenExprs="{1: true}" %}
   </li>
 </ol>

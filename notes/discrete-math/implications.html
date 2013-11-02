@@ -15,14 +15,7 @@ layout: note
 </ul>
 
 <p>What it means for $a$ <code>implies</code> $b$ to be <code>true</code> is that if $a$ is <code>true</code>, then $b$ must also be <code>true</code>. If $a$ is <code>false</code>, then it doesn't matter what $b$ is -- $a$ <code>implies</code> $b$ will be <code>true</code>. Here it is in a truth table:</p>
-
-<table class="table">
-  <tr><th>$a$</th><th>$b$</th><th>$a \to b$</th></tr>
-  <tr><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>
-  <tr><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td></tr>
-  <tr><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>
-  <tr><td><code>false</code></td><td><code>false</code></td><td><code>true</code></td></tr>
-</table>
+{% include truth-table.html id="implies" vars="['A', 'B']" exprs="[new TTImplies('A', 'B')]" hiddenExprs="{}" %}
 
 <h2>Examples</h2>
 <p>Some examples may help clarify how this works.</p>
@@ -98,13 +91,7 @@ layout: note
 <ol>
   <li>
     <p>Write out the truth table for $(\neg a) \lor b$. What do you notice? Can you explain why this makes sense?</p>
-    <table class="table">
-      <tr><th>$a$</th><th>$b$</th><th>$(\neg a) \lor b$</th></tr>
-      <tr><td><code>true</code></td><td><code>true</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-      <tr><td><code>true</code></td><td><code>false</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-      <tr><td><code>false</code></td><td><code>true</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-      <tr><td><code>false</code></td><td><code>false</code></td><td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td></tr>
-    </table>
+    {% include truth-table.html id="implies-formula" vars="['A', 'B']" exprs="[new TTNot('A'), new TTOr(new TTNot('A'), 'B')]" hiddenExprs="{1: true}" %}
   </li>
   <li>
     <p>There are four cards on a table. Each card has a side that's either red or blue, and a side with a number. Your friend tells you that if the card is red, then the other side must have an even number. The four cards you see are:</p>
