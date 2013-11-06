@@ -63,7 +63,7 @@ TruthTable.prototype.latex = function(expr) {
     aLatex = this.latex(expr.a);
   }
   if (expr.constructor.name === 'TTNot') {
-    return '\\neg ' + aLatex;
+    return '(\\neg ' + aLatex + ')';
   }
   
   var bLatex;
@@ -103,7 +103,7 @@ TruthTable.prototype.render = function(divId, hiddenExprs) {
     var row = $('<tr>');
     for (vIndex in this.vars) {
       var v = this.vars[vIndex];
-      var col = '<td><code>' + symtab[v] + '</code></td>';
+      var col = '<td>' + symtab[v] + '</td>';
       row.append(col);
     }
     for (exprIndex in this.exprs) {
@@ -116,7 +116,7 @@ TruthTable.prototype.render = function(divId, hiddenExprs) {
       } else {
         var expr = this.exprs[exprIndex];
         var val = this.evaluate(expr, symtab);
-        var col = '<td><code>' + val + '</code></td>';
+        var col = '<td>' + val + '</td>';
         row.append(col);
       }
     }
