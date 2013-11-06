@@ -15,7 +15,7 @@ layout: note
 <h3>Not</h3>
 <p><em>Not</em> is very simple. Suppose we have a proposition, "I was born in December." Let's call this proposition $p$. Then <em>not</em> $p$ is something like "I was not born in December." Something that is <em>not</em> true is false, and something that is <em>not</em> false is true.</p>
 
-<p>The common mathematical notation for <em>not</em> is $\neg A$.</p>
+<p>The common mathematical notation for <em>not</em> is $\neg p$.</p>
 
 <p>When the number of variables is small, we can list out the value of a boolean function for all possible values of the input variables. These are called <em>truth tables</em>. Here is the truth table for <em>not</em>:</p>
 
@@ -35,7 +35,7 @@ layout: note
       <p>If a function has only one variable, like <em>not</em>, we need 2 rows in the truth table. If the function has two variables, we need 4 rows. How many rows do we need for the truth table of a function of three variables? Of $n$ variables?</p>
     </li>
     <li>
-      <p>Let's say we have a truth table with one variable, so there are two rows. There are four ways to assign each row to either true or false. How many ways are there to assign each row to true/false if there are 2 input variables? Of $n$ variables?</p>
+      <p>Let's say we have a truth table with one variable, so there are two rows. There are four ways to assign each row to either true or false. How many ways are there to assign each row to true/false if there are 2 input variables? $n$ variables?</p>
     </li>
 </div>
 
@@ -47,7 +47,7 @@ layout: note
 {% include truth-table.html id="or" vars="['p', 'q']" exprs="[new TTOr('p', 'q')]" hiddenExprs="{}" %}
 
 <h3>Xor</h3>
-<p>In our previous example, we said "You can have a slice of cake, or a slice of pie," and by that we meant that they couldn't have both. This is what <em>xor</em> (exclusive-or) is. $p$ xor $q$ (notated $p \oplus q$) is only true if $p$ is true, or $q$ is true, but not both. Another way to think about it is that $p$ <em>xor</em> $q$ is only true if $p$ and $q$ have different truth values.</p>
+<p>In our previous example, we said "You can have a slice of cake, or a slice of pie," and by that we meant that they couldn't have both. This is what <em>xor</em> (exclusive-or) is. $p$ <em>xor</em> $q$ (notated $p \oplus q$) is only true if $p$ is true, or $q$ is true, but not both. Another way to think about it is that $p$ <em>xor</em> $q$ is only true if $p$ and $q$ have different truth values.</p>
 
 <p>Here's the truth table for <em>xor</em>:</p>
 
@@ -71,12 +71,12 @@ layout: note
 </div>
 
 <h3>Implications</h3>
-<p>The last function we need to talk about is <em>implies</em>. It can be difficult, to understand, but it is also very important -- so important, we save it for later, as the topic of the next page of notes.</p>
+<p>The last function we need to talk about is <em>implies</em>. It can be difficult, to understand, but it is also very important -- so important that we save it for later, as the topic of the next page of notes.</p>
 
 <h2>Combining functions</h2>
 <p>We can combine boolean functions together to form new functions. For example, we can combine <em>not</em> and <em>and</em> by saying $\neg (p \land q)$. Two functions are equal if they have the same output for every possible input -- in other words, if they have the same truth table.</p>
 
-<p>It's important to use parentheses to specify the order of operations if it wouldn't be clear otherwise. For example, if we just wrote $\neg p \land q$, it's not clear if we mean $\neg (p \land q)$ or $(\neg p) \land q. It makes a difference! We will show this using our first type of proof: <em>proof by truth table</em>.</p>
+<p>It's important to use parentheses to specify the order of operations, if it wouldn't be clear otherwise. For example, if we just wrote $\neg p \land q$, it's not clear if we mean $\neg (p \land q)$ or $(\neg p) \land q$. It makes a difference! We will show this using our first type of proof: <em>proof by truth table</em>.</p>
 
 <p><strong>Proof:</strong> The truth table for $\neg (p \land q)$ is:</p>
 {% include truth-table.html id="no-assoc1" vars="['p', 'q']" exprs="[new TTAnd('p', 'q'), new TTNot(new TTAnd('p', 'q'))]" hiddenExprs="{}" %}
@@ -102,9 +102,13 @@ layout: note
 <p>We can similarly prove the other law using truth tables.</p>
 <div class="questions">
   <p><strong>Questions:</strong></p>
-  <p>Fill out the truth tables to prove the other of DeMorgan's laws.</p>
-  {% include truth-table.html id="demorgan-or1" vars="['p', 'q']" exprs="[new TTOr('p', 'q'), new TTNot(new TTOr('p', 'q'))]" hiddenExprs="{}" %}
-  {% include truth-table.html id="demorgan-or2" vars="['p', 'q']" exprs="[new TTNot('p'), new TTNot('q'), new TTAnd(new TTNot('p'), new TTNot('q'))]" hiddenExprs="{}" %}
+  <ol>
+    <li>
+      <p>Fill out the truth tables to prove the other one of DeMorgan's laws.</p>
+      {% include truth-table.html id="demorgan-or1" vars="['p', 'q']" exprs="[new TTOr('p', 'q'), new TTNot(new TTOr('p', 'q'))]" hiddenExprs="{0: true, 1: true}" %}
+      {% include truth-table.html id="demorgan-or2" vars="['p', 'q']" exprs="[new TTNot('p'), new TTNot('q'), new TTAnd(new TTNot('p'), new TTNot('q'))]" hiddenExprs="{0: true, 1: true, 2: true}" %}
+    </li>
+  </ol>
 </div>
 
 <p>Using a truth table is a good way to prove DeMorgan's laws, but it doesn't offer much insight into why it's true. It can be fun to think through these things using real world scenarios.</p>
@@ -112,7 +116,7 @@ layout: note
 <p>Let's say we're throwing a party, and we invited our friends, Penelope and Quentin, who recently broke up with each other. Let $p$ be "Penelope attends the party" and $q$ be "Quentin attends the party." It would be be awkward if they both showed up. So, the party won't be awkward as long as $\neg (p \land q)$. Another way to think about it is that it's okay as long as Penelope doesn't show up, or Quentin doesn't show up, or neither shows up. In other words, $(\neg p) \lor (\neg q)$.</p>
 
 <h3>Common identities</h3>
-<p>A list of common identities is below:</p>
+<p>A list of common identities is below. These can all be proven using truth tables.</p>
 <dl>
   <dt>Associativity</dt>
   <dd>$(p \land q) \land r = p \land (q \land r) \\
@@ -145,5 +149,7 @@ layout: note
   <tr><td>$(p \land q) \lor p = p \lor (p \land q)$</td><td>Commutativity</td></tr>
   <tr><td>$p \lor (p \land q) = (p \lor p) \land (p \lor q)$</td><td>Distributivity</td></tr>
   <tr><td>$(p \lor p) \land (p \lor q) = p \land (p \lor q)$</td><td>Idempotency</td></tr>
-  <tr><td>$p \land (p \lor q) = p \land (q \lor p)$</td><td>Commutativity</td></tr>
+  <tr><td>$p \land (p \lor q) = p \land (q \lor p)$</td><td>Commutativity $\square$</td></tr>
 </table>
+
+<p>You can also prove that the two functions are true by showing that $(p \land q) \lor p = p$ and $p \land (q \lor p) = p$ through commutativity and absorption.</p>
