@@ -4,29 +4,51 @@ layout: note
 ---
 
 <h1>{{page.title}}</h1>
-<p><code>Implies</code> can be a difficult operator to understand. But, we will use it often. There are many different ways to say $A$ <code>implies</code> $B$ (notated $A \to B$):</p>
+<p><em>Implies</em> is one of the most frequently used boolean functions. Intuitively, "$p$ implies $q$", means that $q$ logically follows from $p$. This is important, because it gives us the building block of proofs. For example:</p>
 
+<ol>
+  <li>$x$ is a human implies $x$ is mortal</li>
+  <li>Socrates is a human</li>
+  <li>Therefore, Socrates is mortal</li>
+</ol>
+
+<p>There are many different ways to say $p$ implies $q$ (notated $p \to q$):</p>
 <ul>
-  <li>$A$ <code>implies</code> $B$</li>
-  <li>$B$ is implied by $A$</li>
-  <li>$A \to B$</li>
-  <li>If $A$, then $B$</li>
-  <li>$B$ if $A$</li>
+  <li>$p$ implies $q$</li>
+  <li>$p \to q$</li>
+  <li>If $p$, then $q$</li>
+  <li>$q$ if $p$</li>
+  <li>$p$ is sufficient for $q$</li>
+  <li>$q$ is necessary for $p$</li>
 </ul>
 
-<p>What it means for $A$ <code>implies</code> $B$ to be <code>true</code> is that if $A$ is <code>true</code>, then $B$ must also be <code>true</code>. If $A$ is <code>false</code>, then it doesn't matter what $B$ is -- $A$ <code>implies</code> $B$ will be <code>true</code>. Here it is in a truth table:</p>
-{% include truth-table.html id="implies" vars="['A', 'B']" exprs="[new TTImplies('A', 'B')]" hiddenExprs="{}" %}
+<p>Check to see if those make sense to you. "If $p$, then $q$" is probably the most common alternative way to state $p$ implies $q$.</p>
+
+<p>Importantly, if $p$ is false, then the implies function is true by default, regardless of what $q$ is. This is kind of like saying, "If pigs fly, then I'll give you a million dollars." Saying this wouldn't be a lie since pigs will never fly.</p>
+
+<p>Here is what the implies function looks like in a truth table:</p>
+{% include truth-table.html id="implies" vars="['p', 'q']" exprs="[new TTImplies('p', 'q')]" hiddenExprs="{}" %}
+
+<div class="questions">
+  <p><strong>Question:</strong></p>
+  <ol>
+    <li>
+      <p>Write out the truth table for $(\neg A) \lor q$. What do you notice? Can you explain why this makes sense?</p>
+      {% include truth-table.html id="implies-formula" vars="['A', 'B']" exprs="[new TTNot('A'), new TTOr(new TTNot('A'), 'B')]" hiddenExprs="{1: true}" %}
+    </li>
+  </ol>
+</div>
 
 <h2>Examples</h2>
 <p>Some examples may help clarify how this works.</p>
 
 <h3>Number line</h3>
-<p>Suppose $A$ = "$x > 5$" and $B$ = "$x > 0$". In this case, $A \to B$ = <code>true</code>, because whenever you have a number greater than 5, it must also be greater than 0.</p>
+<p>Suppose $p$ = "$x > 5$" and $q$ = "$x > 0$". In this case, $p$ implies $q$ for all values of $x$, since a number greater than 5 must also be greater than 0.</p>
 
-<p>Now suppose $A$ = "$x > -5$" and $B$ = "$x > 0$". Does $A$ imply $B$? No. If $x = -3$, then $A$ is <code>true</code>, but $B$ is <code>false</code>. So $A \to B$ is <code>false</code>. $A$ being <code>true</code> should guarantee that $B$ is <code>true</code>.</p>
+<p>Now suppose $p$ = "$x > -5$" and $q$ = "$x > 0$". Does $p$ imply $q$ for all values of $x$? No. For example, if $x = -3$, then $p$ is true, but $q$ is false, so $p$ does not imply $q$.</p>
 
 <h3>Checking IDs</h3>
-<p>Imagine being in a restaurant, and let $A$ = "The customer is drinking something alcoholic" and $B$ = "The customer is aged 21 or over." (This is a US-centric example, where the legal drinking age is 21.) You see four customers with drinks:</p>
+<p>Imagine being in a restaurant, and let $p$ = "The customer is drinking something alcoholic" and $q$ = "The customer is aged 21 or over." You see four customers with drinks:</p>
 
 <ol>
   <li>One is drinking a beer.</li>
@@ -35,27 +57,44 @@ layout: note
   <li>One is age 18.</li>
 </ol>
 
-<p>Whose drinks/IDs do you need to check to see if $A \to B$ = <code>true</code> for every customer? The answer is obvious, but let's check the truth table:</p>
+<p>Whose drinks/IDs do you need to check to see if $p \to q$ for every customer? Let's check the truth table:</p>
 
 <table class="table">
-  <tr><th>$A$</th><th>$B$</th><th>$A \to B$</th></tr>
-  <tr><td>Drinking beer</td><td>25 year old</td><td><code>true</code></td></tr>
-  <tr><td>Drinking beer</td><td>18 year old</td><td><code>false</code></td></tr>
-  <tr><td>Drinking soda</td><td>25 year old</td><td><code>true</code></td></tr>
-  <tr><td>Drinking soda</td><td>18 year old</td><td><code>true</code></td></tr>
+  <tr><th>$p$</th><th>$q$</th><th>$p \to q$</th></tr>
+  <tr><td>Drinking beer</td><td>25 year old</td><td>true</td></tr>
+  <tr><td>Drinking beer</td><td>18 year old</td><td>false</td></tr>
+  <tr><td>Drinking soda</td><td>25 year old</td><td>true</td></tr>
+  <tr><td>Drinking soda</td><td>18 year old</td><td>true</td></tr>
 </table>
 
-<p>As you can see, $A \to B$ is <code>false</code> if the customer is drinking a beer and is 18, so you should check the customer drinking a beer, and the customer who's 18. Notice that if $A$ is <code>false</code> (the customer's drinking a soda), then $A \to B$ = <code>true</code> no matter what $B$ is. This is the case for all implications. If $A$ is <code>false</code>, then $A \to B$ is always <code>true</code>. But if $A$ is <code>true</code>, then $A \to B$ is only <code>true</code> if $B$ is <code>true</code> as well.</p>
+<p>As you can see, $p \to q$ is only false if the customer is drinking a beer and is 18, so you should check the customer drinking a beer, and the customer who's 18. Notice that if $p$ is false (the customer's drinking a soda), then $p \to q$ = true no matter what $q$ is.</p>
+
+<div class="questions">
+  <p><strong>Question:</strong></p>
+  <ol>
+    <li>
+      <p>There are four cards on a table. Each card has a side that's either red or blue, and a side with a number. Your friend tells you that if the card is red, then the other side must have an even number. The four cards you see are:</p>
+      <ul>
+        <li>Red</li>
+        <li>2</li>
+        <li>Blue</li>
+        <li>1</li>
+      </ul>
+      <p>Which cards do you need to flip over to see if your friend is right?</p>
+    </li>
+  </ol>
+</div>
 
 <h2>Inverse, converse, and contrapositive</h2>
-<p>There are special names for when you rearrange or negate $A$ and $B$. Given $A \to B$:</p>
+<p>There are special names for when you rearrange or negate $p$ and $q$. Given $p \to q$:</p>
 
 <ul>
-  <li>$\neg A \to \neg B$ is the inverse.</li>
-  <li>$B \to A$ is the converse.</li>
-  <li>$\neg B \to \neg A$ is the contrapositive.</li>
+  <li>$\neg p \to \neg q$ is the <em>inverse</em>.</li>
+  <li>$q \to p$ is the <em>converse</em>.</li>
+  <li>$\neg q \to \neg p$ is the <em>contrapositive</em>.</li>
 </ul>
 
+<h3>Example</h3>
 <p>Suppose your friend tells you, "if it's sunny tomorrow, then I'll go for a run." Let's also say that there are only two possibilities for the weather: sun or rain. Here are the inverse, converse, and contrapositive of that statement:</p>
 
 <ul>
@@ -64,46 +103,53 @@ layout: note
   <li>Contrapositive: "If I don't go for a run tomorrow, then it rained."</li>
 </ul>
 
-<p>Suppose your friend's statement is <code>true</code>. Here are three tough questions:</p>
+<div class="questions">
+  <p><strong>Questions:</strong></p>
+  <ol>
+    <li>
+      <p>What is the inverse of "If a customer is drinking alcohol, he must be 21 or over"?
+    </li>
+    <li>
+      <p>What is the converse of "If a customer is drinking alcohol, he must be 21 or over"?
+    </li>
+    <li>
+      <p>What is the contrapositive of "If a customer is drinking alcohol, he must be 21 or over"?
+    </li>
+  </ol>
+</div>
 
-<ol>
-  <li>Must the inverse be <code>true</code>?</li>
-  <li>Must the converse be <code>true</code>?</li>
-  <li>And must the contrapositive be <code>true</code>?</li>
-</ol>
+<p>If your friend keeps her word, which of the three statements above have to be true? Surprisingly, only the contrapositive has to be true.</p>
 
-<p>The answer is, surprisingly, that the contrapositive must be <code>true</code>, but neither the inverse nor the converse have to be <code>true</code>. In the next page of notes, we'll prove this. But, for now, let's think about it intuitively.</p>
+<p>It could be the case that your friend just loves to run, rain or shine. She told you that if it didn't rain tomorrow, she would go for a run. But if it does rain, she could go for a run anyway. Assuming the inverse is always true is called the <em>inverse error</em>.</p>
 
-<p>Suppose your friend is a star runner who runs on most days, rain or shine. Your friend told you that if it didn't rain tomorrow, she would go for a run. But she didn't tell you what she would do if it didn't rain. She could stay at home, or she could go for a run anyway, in which case the inverse is <code>false</code>.</p>
+<p>The converse isn't guaranteed to be true for the same reason. Just because your friend went for a run doesn't mean it was sunny, since she could have run in the rain. Assuming the converse is always true is called the <em>converse error</em>.</p>
 
-<p>The converse isn't guaranteed to be <code>true</code> for the same reason. Your friend could have gone for a run whether it was rainy or not.</p>
+<p>Why is the contrapositive always true? If it was sunny outside, then your friend would have gone for her run. But if it didn't rain, then we don't know what her plans are. She may have gone for arun in the rain, but she also might have just stayed at home. Still, the only time your friend wouldn't have gone for a run is if it was rainy outside.</p>
 
-<p>Thinking about whether the contrapositive is always <code>true</code> is the hardest of them all. Either it was sunny or it rained.</p>
+<h3>Proofs about the inverse, converse, and contrapositive</h3>
+<p>We can use truth tables to prove that an implication is not the same as its inverse or its converse. Notice, however, that the inverse and converse are equivalent to each other.</p>
 
-<ul>
-  <li>If it was sunny outside, then your friend must have gone for a run.</li>
-  <li>If it rained, your friend may have gone for a run, but also may not have.</li>
-</ul>
+<p><strong>Proof:</strong> The truth table for the inverse is:</p>
+{% include truth-table.html id="inv" vars="['p', 'q']" exprs="[new TTNot('p'), new TTNot('q'), new TTImplies(new TTNot('p'), new TTNot('q'))]" hiddenExprs="{}" %}
 
-<p>So as we can see, the only time your friend wouldn't have gone for a run is if it was rainy outside.</p>
-  
-<h2>Questions</h2>
-<ol>
-  <li>
-    <p>Write out the truth table for $(\neg A) \lor B$. What do you notice? Can you explain why this makes sense?</p>
-    {% include truth-table.html id="implies-formula" vars="['A', 'B']" exprs="[new TTNot('A'), new TTOr(new TTNot('A'), 'B')]" hiddenExprs="{1: true}" %}
-  </li>
-  <li>
-    <p>There are four cards on a table. Each card has a side that's either red or blue, and a side with a number. Your friend tells you that if the card is red, then the other side must have an even number. The four cards you see are:</p>
-    <ul>
-      <li>Red</li>
-      <li>2</li>
-      <li>Blue</li>
-      <li>1</li>
-    </ul>
-    <p>Which cards do you need to flip over to see if your friend is right?</p>
-  </li>
-  <li>
-    <p>What is the inverse, the converse, and the contrapositive of "If a customer is drinking alcohol, he must be 21 or over"?
-  </li>
-</ul>
+<p>And the truth table for the converse is:</p>
+{% include truth-table.html id="conv" vars="['p', 'q']" exprs="[new TTImplies('q', 'p')]" hiddenExprs="{}" %}
+
+<p>Neither the inverse nor the converse have the same truth table as <em>implies</em>. $\square$</p>
+
+<p>We can also prove these identities algebraically. Below is an algebraic proof that an implication is the same as its contrapositive:</p>
+
+<p><strong>Proof:</strong> In one of the questions above, you can use truth tables to show that $p \to q$ equals $\neg p \lor q$. Using this fact:</p>
+
+<table class="table">
+  <tr><th>Step</th><th>Reason</th></tr>
+  <tr><td>$p \to q = \neg p \lor q$</td><td>By truth table</td></tr>
+  <tr><td>$\neg p \lor q = q \lor \neg p$</td><td>Commutativity</td></tr>
+  <tr><td>$q \lor \neg p = \neg (\neg q) \lor \neg p$</td><td>Double negation</td></tr>
+  <tr><td>$\neg (\neg q) \lor \neg p = \neg q \to \neg p$</td><td>By truth table $\square$</td></tr>
+</table>
+
+<h3>If and only if</h3>
+<p>If $p \to q$ and $q \to p$, we say $p$ "if and only if" (denoted $p \leftrightarrow q$). Sometimes "if and only if" is abbreviated as "iff". Below is the truth table for $p \leftrightarrow q$:</p>
+{% include truth-table.html id="iff" vars="['p', 'q']" exprs="[new TTImplies('p', 'q'), new TTImplies('q', 'p'), new TTAnd(new TTImplies('p', 'q'), new TTImplies('q', 'p')), new TTIff('p', 'q')]" hiddenExprs="{}" %}
+<p>As we can see from the truth table, when $p \leftrightarrow q$ is true, if means $p$ and $q$ are the same.</p>
