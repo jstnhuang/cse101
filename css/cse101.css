@@ -3,7 +3,18 @@ body {
 }
 
 body > .navbar .navbar-brand {
-  color: #333;
+  background-color: #3445B9;
+  color: white;
+}
+
+body > .navbar .navbar-brand:hover {
+  background-color: #3445B9;
+  color: white;
+  text-decoration: underline;
+}
+
+a, a:hover {
+  color: #3445B9;
 }
 
 .document > h1 {
