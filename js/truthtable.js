@@ -107,15 +107,32 @@ TruthTable.prototype.render = function(divId, hiddenExprs) {
       row.append(col);
     }
     for (exprIndex in this.exprs) {
+      var expr = this.exprs[exprIndex];
+      var val = this.evaluate(expr, symtab);
       if (
         hiddenExprs.hasOwnProperty(exprIndex)
         && hiddenExprs[exprIndex] === true
       ) {
-        var col = '<td><select><option value=""></option><option value="true">true</option><option value="false">false</option></select></td>';
+        var select = $('<select><option value=""></option><option value="true">true</option><option value="false">false</option></select><span class="glyphicon"></span>');
+        select.data('correctVal', '' + val);
+        select.change(function(e) {
+          var correctVal = $(this).data('correctVal');
+          var selectedVal = $(this).val();
+          var glyph = $(this).next();
+          if (selectedVal === '') {
+            glyph.removeClass().addClass('glyphicon');
+          } else {
+            if (correctVal === selectedVal) {
+              glyph.removeClass().addClass('glyphicon glyphicon-ok-circle');
+            } else {
+              glyph.removeClass().addClass('glyphicon glyphicon-remove-circle');
+            }
+          }
+        })
+        var col = $('<td></td>');
+        col.append(select);
         row.append(col);
       } else {
-        var expr = this.exprs[exprIndex];
-        var val = this.evaluate(expr, symtab);
         var col = '<td>' + val + '</td>';
         row.append(col);
       }
