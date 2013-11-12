@@ -150,6 +150,6 @@ layout: note
 </table>
 
 <h3>If and only if</h3>
-<p>If $p \to q$ and $q \to p$, we say $p$ "if and only if" (denoted $p \leftrightarrow q$). Sometimes "if and only if" is abbreviated as "iff". Below is the truth table for $p \leftrightarrow q$:</p>
+<p>If $p \to q$ and $q \to p$, we say $p$ "if and only if" $q$ (denoted $p \leftrightarrow q$). Sometimes "if and only if" is abbreviated as "iff". Below is the truth table for $p \leftrightarrow q$:</p>
 {% include truth-table.html id="iff" vars="['p', 'q']" exprs="[new TTImplies('p', 'q'), new TTImplies('q', 'p'), new TTAnd(new TTImplies('p', 'q'), new TTImplies('q', 'p')), new TTIff('p', 'q')]" hiddenExprs="{}" %}
-<p>As we can see from the truth table, when $p \leftrightarrow q$ is true, if means $p$ and $q$ are the same.</p>
+<p>As we can see from the truth table, when $p \leftrightarrow q$ is true, it means $p$ and $q$ are the same.</p>
