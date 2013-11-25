@@ -43,9 +43,9 @@ layout: note
 <p>Some examples may help clarify how this works.</p>
 
 <h3>Number line</h3>
-<p>Suppose $p(x)$ = "$x > 5$" and $q$ = "$x > 0$". In this case, $p(x)$ implies $q(x)$ for all values of $x$, since a number greater than 5 must also be greater than 0.</p>
+<p>Suppose $p(x)$ = "$x > 5$" and $q$ = "$x > 0$". In this case, we can say $\forall x, p(x) \to q(x)$, since any number greater than 5 must also be greater than 0.</p>
 
-<p>Now suppose $p(x)$ = "$x > -5$" and $q(x)$ = "$x > 0$". Does $p(x)$ imply $q(x)$ for all values of $x$? No. For example, if $x = -3$, then $p(x)$ is true, but $q(x)$ is false, so $p(x)$ does not imply $q(x)$.</p>
+<p>Now suppose $p(x)$ = "$x > -5$" and $q(x)$ = "$x > 0$". Is $\forall x, p(x) \to q(x)$? No. For example, if $x = -3$, then $p(x)$ is true, but $q(x)$ is false, so $p(x)$ does not imply $q(x)$.</p>
 
 <h3>Checking IDs</h3>
 <p>Imagine being in a restaurant, and let $p(x)$ = "$x$ is drinking something alcoholic" and $q(x)$ = "$x$ is aged 21 or over." You see four customers with drinks:</p>
@@ -57,7 +57,7 @@ layout: note
   <li>One is age 18.</li>
 </ol>
 
-<p>Whose drinks/IDs do you need to check to see if $p(x) \to q(x)$ for every customer? Let's check the truth table:</p>
+<p>Whose drinks/IDs do you need to check to see if $\forall x, p(x) \to q(x)$? Let's check the truth table:</p>
 
 <table class="table">
   <tr><th>$p$</th><th>$q$</th><th>$p \to q$</th></tr>
