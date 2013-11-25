@@ -1,0 +1,133 @@
+---
+title: Sets and tuples
+layout: note
+---
+
+<h1>{{page.title}}</h1>
+<p>This section introduces two important mathematical data structures.</p>
+
+<h2>Sets</h2>
+<p>A <em>set</em> is a collection of objects that has no duplicates, and is not in any particular order. The most common notation for a set is to use curly braces. For example, $\{0, 1, 2, 3, 4\}$ is a set of five numbers. Because sets are unordered, $\{0, 1, 2, 3, 4\}$ is the same as $\{4, 1, 3, 0, 2\}$. And, because sets don't have duplicates, $\{0, 0, 1, 2, 3, 4, 4\}$ equals $\{0, 1, 2, 3, 4\}$. We say two sets are equal if they contain exactly the same elements.</p>
+
+<h3>Set notation</h3>
+<p>Sets can be described in terms of some predicate. The set of all things such that $p(x)$ is true is written as $\{x \mid p(x)\}$, or sometimes $\{x : p(x)\}$. For example, the set $E$ of all even integers is $E = \{2x \mid x \mbox{ is an integer}\}$. You would read this as "$2x$ for all $x$ such that $x$ is an integer."</p>
+
+<p>If we wanted to say that a number $e$ is in the set of even numbers $E$, we would write $e \in E$. For example, the set of odd numbers is $\{e + 1 \mid e \in E\}$. To say an element is not in a set, we use $\notin$, as in $3 \notin E$.</p>
+
+<p>A set that has nothing in it is called the <em>empty set</em>, denoted with the symbol $\emptyset$.</p>
+
+<p>The number of elements in a set is denoted as $\left\vert A\right\vert$. For example, $\left\vert\{x \mid x \mbox{ is even} \land x \geq 0 \land x < 10\}\right\vert = 5$, and $\left\vert\emptyset\right\vert = 0$.</p>
+
+<h3>Set operations</h3>
+<p>Let's say we have two sets, $A$ and $B$. The set of all elements that are either in $A$ or $B$ is called the <em>union</em> of $A$ and $B$, denoted $A \cup B$. Formally, $A \cup B = \{e \mid (e \in A) \mbox{ or } (e \in B)\}$.</p>
+
+<p>The <em>intersection</em> of $A$ and $B$ (denoted $A \cap B$) is the set of elements that are in both $A$ and $B$. That is, $A \cap B = \{e \mid (e \in A) \mbox{ and } (e \in B)\}$.
+
+<p>The set of all elements in $A$ that are not in $B$ is $A \setminus B$, called "set minus". This is sometimes also written as $A - B$. You can think of it as subtracting out all the elements of $B$ from $A$. Formally, $A \setminus B = \{e \mid e \in A \mbox{ and } e \notin B\}$.</p>
+
+<p>The <em>complement</em> of $A$ (denoted $A^C$) is the set of all elements that are not in $A$. In other words, $A^C = \{e \mid e \notin A\}$. We assume that there is some universe of possible elements, $U$, such that $A^C = U \setminus A$.</p>
+
+<h3>Subsets</h3>
+<p>If all the elements of $A$ are also in $B$, then $A$ is a <em>subset</em> of $B$, denoted as $A \subseteq B$. In that case, $B$ is called a <em>superset</em> of $A$. For example, the set of even numbers is a subset of the set of integers. The empty set is a subset of all sets. It has no elements, so trivially, "all" of its elements are in any other set.</p>
+
+<p>Every set is a subset of itself. If we want to say that $A$ is a subset of $B$ and $A$ is smaller than $B$, then we say that $A$ is a <em>strict subset</em> of $B$, denoted $A \subset B$.</p>
+
+<h4>Power set</h4>
+<p>The power set of $A$ is $P(A) = \{X \mid X \subseteq A\}$, the set of all subsets of $A$. For example, the power set of $\{1, 2, 3\}$ is:</p>
+$$\left\{\emptyset, \{1\}, \{2\}, \{3\}, \{1, 2\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\}\right\}$$
+
+<p>To be clear, the power set is a set whose elements are also sets. As you can see, the power set of $\{1, 2, 3\}$ has 1 empty set, 3 sets of size one, 3 sets of size two, and 1 set of size three, for a total of 8 elements.</p>
+
+<h3>Set identities</h3>
+<p>As with boolean logic, there are identities that apply to sets. We will see how to prove these in the next section. Some important identities include:</p>
+<dl>
+  <dt>Associativity</dt>
+  <dd>
+    $A \cup (B \cup C) = (A \cup B) \cup C$<br />
+    $A \cap (B \cap C) = (A \cap B) \cap C$
+  </dd>
+  <dt>Distributivity</dt>
+  <dd>
+    $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$<br />
+    $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$
+  </dd>
+  <dt>Idempotency</dt>
+  <dd>
+    $A \cup A = A$<br />
+    $A \cap A = A$
+  </dd>
+  <dt>Double complement</dt>
+  <dd>
+    $(A^C)^C = A$
+  </dd>
+  <dt>DeMorgan's laws</dt>
+  <dd>
+    $(A \cup B)^C = A^C \cap B^C$<br />
+    $(A \cap B)^C = A^C \cup B^C$
+  </dd>
+  <dt>Commutativity</dt>
+  <dd>
+    $A \cup B = B \cup A$<br />
+    $A \cap B = B \cap A$
+  </dd>
+  <dt>Absorption</dt>
+  <dd>
+    $A \cup (A \cap B) = A$<br />
+    $A \cap (A \cup B) = A$
+  </dd>
+</dl>
+
+<h4>Proving set identities</h4>
+<p>One way to prove that $A$ and $B$ are equal is to show that $A$ is a subset of $B$, and $B$ is a subset of $A$. Because $A$ is a subset of $B$, $B$ contains all the elements that $B$ contains. So as long as $B$ doesn't have any elements that $A$ doesn't have, $A$ and $B$ contain exactly the same elements. We know this is true, however, because $B$ is a subset of $A$, which, by definition, means that any element in $B$ is also in $A$.</p>
+
+<p>Let's prove the first of DeMorgan's laws, $(A \cup B)^C = A^C \cap B^C$, by showing that each side of the equation is a subset of the other side.</p>
+
+<p><strong>Proof:</strong><p>
+<p>First we show that $(A \cup B)^C \subseteq A^C \cap B^C$:</p>
+<ol>
+  <li>Let $x$ be any element in $(A \cup B)^C$.</li>
+  <li>By definition of set complement, $x \notin (A \cup B)$.</li>
+  <li>$x \notin A$, since if $x$ were in $A$, $x$ would be in $A \cup B$ as well. Therefore, by definition of set complement, $x \in A^C$.</li>
+  <li>$x \in B^C$ for the same reason.</li>
+  <li>Because $x \in A^C$ and $x \in B^C$, $x \in A^C \cap B^C$ by definition of set intersection.</li>
+  <li>Since any element of $(A \cup B)^C$ is also in $A^C \cap B^C$, $(A \cup B)^C$ is a subset of $A^C \cap B^C$ by definition of subsets.</li>
+</ol>
+
+<p>Next we show that $A^C \cap B^C \subseteq (A \cup B)^C$:</p>
+<ol>
+  <li>Let $x$ be any element in $A^C \cap B^C$.</li>
+  <li>By definition of set intersection, $x \in A^C$ and $x \in B^C$.</li>
+  <li>$x \notin A$ and $x \notin B$ by definition of set complement.</li>
+  <li>$x \notin (A \cup B)$. Suppose instead that $x \in (A \cup B)$. Then $x \in A$ or $x \in B$ by definition of set union. Let $p(x) = ``x \in A\mbox{ or }x \in B."$ By DeMorgan's law for boolean logic, $\neg p(x) = ``x \notin A\mbox{ and }x \notin B."$ But we showed earlier that this was true. So $p(x)$ is true and $\neg p(x)$ is true, which is a contradiction. Therefore, our assumption that $x \in (A \cup B)$ was false, and $x \notin (A \cup B)$.</li>
+  <li>By definition of set complement, $x \in (A \cup B)^C$.</li>
+  <li>Since every element of $A^C \cap B^C$ is in $(A \cup B)^C$, $A^C \cap B^C$ is a subset of $(A \cup B)^C$ by definition of subsets.</li>
+</ol>
+
+<p>We have shown that $(A \cup B)^C \subseteq A^C \cap B^C$ and $A^C \cap B^C \subseteq (A \cup B)^C$, therefore $(A \cup B)^C = A^C \cap B^C$. $\square$</p>
+
+<p>The above proof shows an example of <em>proof by contradiction</em>. This is just one of many proof techniques that are discussed more in other notes. As you can see, these kinds of proofs can be very tedious. Luckily, once someone proves something once, it's proven forever.</p>
+
+<h3>Common sets of numbers</h3>
+<p>Below are common symbols used for sets of numbers.</p>
+<table>
+  <tr><th>Symbol</th><th>Number set</th></tr>
+  <tr><td>$\mathbb{N}$</td><td>All natural numbers</td></tr>
+  <tr><td>$\mathbb{Z}$</td><td>All integers</td></tr>
+  <tr><td>$\mathbb{Z}_+$</td><td>All positive numbers</td></tr>
+  <tr><td>$\mathbb{Z}_n$</td><td>The set $\{0, 1, \ldots, n-1\}$</td></tr>
+  <tr><td>$\mathbb{Q}$</td><td>All rational numbers</td></tr>
+  <tr><td>$\mathbb{R}$</td><td>All real numbers</td></tr>
+</table>
+
+<p>The $\mathbb{Z}$ for integers comes from the German word "zahlen," meaning "numbers." $\mathbb{Q}$ comes from "quotient."</p>
+
+<h2>Tuples</h2>
+<p>An $n$-tuple is an ordered collection of $n$ elements. The size of a tuple is finite and fixed -- you can't add an element to it or remove an element from it. Unlike sets, they can contain duplicate elements. They are commonly used to group different pieces of information together. For example, you might say that a person's birthday is a 3-tuple, where the first element is the year, the second element is the month, and the third element is the day. Tuples are commonly written using parentheses, like $(y, m, d) = (1990, 5, 1)$.</p>
+
+<h3>Cartesian product</h3>
+<p>The <em>Cartesian product</em> of two sets is $A \times B = \{(a, b) \mid a \in A\mbox{ and }b \in B\}$. For example, $\mathbb{R} \times \mathbb{R}$, the set of all pairs of real numbers, is the $xy$-plane we're all familiar with from algebra. $\mathbb{R} \times \mathbb{R}$ is often denoted $\mathbb{R}^2$. The Cartesian product can be generalized to handle any number of sets. For example, $A \times B \times C = \{(a, b, c) \mid a \in A\mbox{ and }b \in B\mbox{ and }c \in C\}$. The set of all 3D points is the Cartesian product $\mathbb{R}^3$.
+
+<h2>Other structures</h2>
+<p>What about other containers, such as an ordered set, or a set that can contain more than one element? A set that can contain duplicates is called a <a href="http://en.wikipedia.org/wiki/Multiset">multiset</a>. You may encounter it at some point while studying computer science, but it's not common.</p>
+
+<p>Order is typically imposed on sets by adding indices to each element. For example, let $X$ be a set of $n$ students in a class ($\left\vert X \right\vert = n$). Then let $x_1, x_2, \ldots, x_n \in X$ be students such that $x_i < x_{i+1}$ if $x_i$ is shorter than $x_{i+1}$. This orders the students by increasing height. Or, we could say $x_i < x_{i+1}$ if $x_i$ has a better grade than $x_{i+1}$. Then, we would be ordering the students by decreasing grade.</p>
