@@ -7,9 +7,9 @@ layout: note
 <p><em>Implies</em> is one of the most frequently used boolean functions. Intuitively, "$p$ implies $q$", means that $q$ logically follows from $p$. This is important, because it gives us the building block of proofs. For example:</p>
 
 <ol>
-  <li>$x$ is a human implies $x$ is mortal</li>
-  <li>Socrates is a human</li>
-  <li>Therefore, Socrates is mortal</li>
+  <li>$x$ is a human implies $x$ is mortal.</li>
+  <li>Socrates is a human.</li>
+  <li>Therefore, Socrates is mortal.</li>
 </ol>
 
 <p>There are many different ways to say $p$ implies $q$ (notated $p \to q$):</p>
@@ -43,12 +43,12 @@ layout: note
 <p>Some examples may help clarify how this works.</p>
 
 <h3>Number line</h3>
-<p>Suppose $p$ = "$x > 5$" and $q$ = "$x > 0$". In this case, $p$ implies $q$ for all values of $x$, since a number greater than 5 must also be greater than 0.</p>
+<p>Suppose $p(x)$ = "$x > 5$" and $q$ = "$x > 0$". In this case, $p(x)$ implies $q(x)$ for all values of $x$, since a number greater than 5 must also be greater than 0.</p>
 
-<p>Now suppose $p$ = "$x > -5$" and $q$ = "$x > 0$". Does $p$ imply $q$ for all values of $x$? No. For example, if $x = -3$, then $p$ is true, but $q$ is false, so $p$ does not imply $q$.</p>
+<p>Now suppose $p(x)$ = "$x > -5$" and $q(x)$ = "$x > 0$". Does $p(x)$ imply $q(x)$ for all values of $x$? No. For example, if $x = -3$, then $p(x)$ is true, but $q(x)$ is false, so $p(x)$ does not imply $q(x)$.</p>
 
 <h3>Checking IDs</h3>
-<p>Imagine being in a restaurant, and let $p$ = "The customer is drinking something alcoholic" and $q$ = "The customer is aged 21 or over." You see four customers with drinks:</p>
+<p>Imagine being in a restaurant, and let $p(x)$ = "$x$ is drinking something alcoholic" and $q(x)$ = "$x$ is aged 21 or over." You see four customers with drinks:</p>
 
 <ol>
   <li>One is drinking a beer.</li>
@@ -57,7 +57,7 @@ layout: note
   <li>One is age 18.</li>
 </ol>
 
-<p>Whose drinks/IDs do you need to check to see if $p \to q$ for every customer? Let's check the truth table:</p>
+<p>Whose drinks/IDs do you need to check to see if $p(x) \to q(x)$ for every customer? Let's check the truth table:</p>
 
 <table class="table">
   <tr><th>$p$</th><th>$q$</th><th>$p \to q$</th></tr>
@@ -67,7 +67,7 @@ layout: note
   <tr><td>Drinking soda</td><td>18 year old</td><td>true</td></tr>
 </table>
 
-<p>As you can see, $p \to q$ is only false if the customer is drinking a beer and is 18, so you should check the customer drinking a beer, and the customer who's 18. Notice that if $p$ is false (the customer's drinking a soda), then $p \to q$ = true no matter what $q$ is.</p>
+<p>As you can see, $p(x) \to q(x)$ is only false if the customer is drinking a beer and is 18, so you should check the customer drinking a beer, and the customer who's 18. Notice that if $p(x)$ is false (the customer's drinking a soda), then $p(x) \to q(x)$ = true no matter what $q(x)$ is.</p>
 
 <div class="questions">
   <p><strong>Question:</strong></p>
