@@ -46,3 +46,7 @@ dd + dt {
   padding: 10px;
   margin-bottom: 1em;
 }
+
+.term {
+  font-style: italic;
+}

@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="/css/whiteboard.css">
+<div class="whiteboard" id="{{include.id}}">
+  <div class="whiteboardPadding">
+    <div class="codeDiv {% if include.showCode == 'false' %}hidden{% endif %}"
+        id="{{include.id}}-codeDiv">
+      <div class="codeDivPadding">
+        <a href="javascript:void(0);"
+          class="whiteboardLabel
+            {% if include.defaultView == 'html' %}active{% endif %}
+            {% if include.editable == 'true' %}editable{% endif %}"
+          id="{{include.id}}-htmlLink">HTML</a>
+        <a href="javascript:void(0);"
+          class="whiteboardLabel
+            {% if include.defaultView == 'css' %}active{% endif %}
+            {% if include.editable == 'true' %}editable{% endif %}"
+          id="{{include.id}}-cssLink">CSS</a>
+        <div class="codeAreaPadding">
+          <textarea
+            class="codeArea
+              {% if include.editable == 'true' %}editable{% endif %}"
+            rows="{{include.height}}" id="{{include.id}}-codeArea"
+            {% if include.editable == false %}readonly="readonly"{% endif %}>
+          </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="previewDiv" id="{{include.id}}-previewDiv">
+      <div class="previewDivPadding">
+        <span class="whiteboardLabel">
+        {% if include.showCode == 'true' and include.editable == 'true' %}
+          Preview:
+        {% else %}
+          Result:
+        {% endif %}
+        </span><div style="clear: both;"></div>
+        <div class="previewArea" id="{{include.id}}-previewArea">
+          <iframe id="{{include.id}}-iframe" src=""></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var codeArea = $("#{{include.id}}-codeArea");
+  var codeDiv = $("#{{include.id}} .codeDiv");
+  $('#{{include.id}}-htmlLink').data('value', '{{include.html}}');
+  $('#{{include.id}}-cssLink').data('value', '{{include.css}}');
+  $('#{{include.id}}-codeArea').val({% if include.defaultView == 'html' %}'{{include.html}}'{% else %}'{{include.css}}'{% endif %});
+</script>
+<script src="/js/jquery.taboverride-1.0.js"></script>
+<script src="/js/html-sanitizer.js"></script>
+<script src="/js/whiteboard.js"></script>
+<script>
+  initWhiteboardById('{{include.id}}');
+</script>

@@ -1,0 +1,106 @@
+.syntaxHighlight {
+    border:2px solid #ccc;
+    padding-right:5px;
+}
+
+.whiteboard {
+    background-color: #ccc;
+    overflow: hidden;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px;
+    margin: 10px 0px;
+}
+
+.hidden {
+    width: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.whiteboardPadding {
+    padding: 2px;
+    overflow: auto;
+}
+
+.whiteboardLabel {
+    font-size: 0.85em;
+    font-weight: bold;
+    margin-right: 3px;
+    color: black;
+    float: left;
+    -moz-border-radius: 4px 4px 0px 0px;
+    -webkit-border-radius: 4px 4px 0px 0px;
+    -khtml-border-radius: 4px 4px 0px 0px;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.whiteboard a.whiteboardLabel {
+    padding: 0px 5px 0px 5px;
+    text-decoration: none;
+    border-bottom: none;
+    background-color: #ddd;
+    
+}
+
+.whiteboard a.whiteboardLabel:hover {
+    background-color: #e4e4e4;
+}
+
+.whiteboard a.whiteboardLabel.editable.active {
+    background-color: #fff;
+}
+
+.whiteboard a.whiteboardLabel.active {
+    background-color: #eee;
+}
+
+.codeDiv {
+    float: left;
+    width: 50%;
+}
+
+.codeDivPadding {
+    padding: 2px;
+}
+
+.previewDiv {
+    float: left;
+    width: 50%;
+}
+
+.previewDivPadding {
+    padding: 2px
+}
+
+.codeArea {
+    font-family: Consolas, Monaco, Monospace;
+    font-size: 15px;
+    resize: none;
+    outline: none;
+    border: none;
+    background-color: #eee;
+    width: 100%;
+    margin: 0px;
+    padding: 2px;
+}
+
+.codeArea.editable {
+    background-color: #fff;
+}
+
+.whiteboard iframe {
+    border: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+
+.previewArea {
+    background-color: #fff;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
