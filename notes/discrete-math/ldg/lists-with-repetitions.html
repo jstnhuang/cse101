@@ -1,0 +1,18 @@
+---
+title: Lists with repetitions
+layout: note
+---
+
+<h1>{{page.title}}</h1>
+<p>We begin with some terminology and notation. <dfn>Set</dfn> and <dfn>list</dfn> both refer to collections of objects. The notation we'll use for lists is:</p>
+<p class="center">[apple, banana, pear, peach]</p>
+
+<p>The notation we'll use for sets is:</p>
+<p class="center">{apple, banana, pear, peach}</p>
+
+<p>What's the difference between a set and a list? A set is a collection of distinct objects in which the order doesn’t matter. So,</p>
+<p class="center">{apple, peach, pear} and {peach, apple, pear}</p>
+<p>are the same sets, and the set {apple, peach, apple} is the same as the set {apple, peach}. In other words, repeated elements are treated as if they occurred only once. Thus two sets are the same if and only if each element that is in one set is in both.</p>
+<p>In a list, order matters and repeated objects are allowed. So,</p>
+<p class="center">(apple, peach), (peach, apple), and (apple, peach, apple)</p>
+<p>are three different lists. Two lists are the same if and only if they have exactly the same items in exactly the same positions.</p>
