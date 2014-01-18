@@ -46,3 +46,7 @@ dd + dt {
   padding: 10px;
   margin-bottom: 1em;
 }
+
+.center {
+  text-align: center;
+}
